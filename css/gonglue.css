@@ -5,6 +5,11 @@ a {
 th {
     width: 70px;
 }
+#main {
+    height: 1743px;
+    background-size: 100%;
+    background-position: center -88px;
+}
 .guidance-wrap {
     position: relative;
     height: 890px;
@@ -20,8 +25,11 @@ th {
     position: relative;
     z-index: 6;
     
+    height: 742px;
+    width: 961px;
     padding-top: 116px;
 
+    overflow: hidden;
     background-color: #fffadd;
 }
 .guidance-title {
@@ -71,6 +79,12 @@ th {
     background-image: url(../img/gonglue/rbtn.png);
     background-repeat: repeat;
 }
+.cqupt-gonglue {
+    position: absolute;
+    top: 116px;
+
+    transition: top 1s;
+}
 .guidance-nav {
     position: relative;
     z-index: 6;
@@ -119,7 +133,7 @@ th {
     position: absolute;
     height: 696px;
     width: 4805px;
-    transition: left 2s;
+    transition: left 1.5s;
 }
 .guidance-content-wrap:after {
     content: "";
@@ -131,6 +145,11 @@ th {
     height: 696px;
     width: 961px;
     border-radius: 10px;
+}
+.img-cover {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
 }
 .dom-img {
     margin-top: 38px;
@@ -249,10 +268,9 @@ th {
 .img-right {
     right: 169px;
 }
-.img-cover {
-    position: absolute;
+.dom-cover {
+    float: left;
     z-index: 5;
-    bottom: 0px;
 
     height: 40px;
     width: 428px;
@@ -367,6 +385,86 @@ th {
 .qq-grounp {
     overflow-y: scroll;
 }
+.guidance-nav-zb li {
+    width: 302px;
+    margin-right: 18px;
+}
+.zb-life-img {
+    position: relative;
+    height: 447px;
+    width: 664px;
+    margin-top: 106px;
+    margin-left: 139px;
+    border: 7px solid #fff6be;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.zb-life-btn {
+    position: absolute;
+    top: 288px;
+
+    height: 100px;
+    width: 76px;
+    border-radius: 5px;
+
+    cursor: pointer;
+    box-shadow: -1px -1px 1px #fed696 inset;
+    background-color: #ffeaab;
+}
+.life-img-box {
+    position: absolute;
+
+    height: 447px;
+    width: 1992px;
+
+    transition: left 1.5s;
+}
+.life-img-box img {
+    float: left;
+    height: 447px;
+    width: 664px;
+}
+.life-lbtn {
+    left: 47px;
+}
+.life-rbtn {
+    right: 54px;
+}
+.life-cover {
+    float: left;
+    z-index: 5;
+    
+    height: 157px;
+    width: 636px;
+    padding-top: 21px;
+    padding-left: 28px;
+
+    font-size: 16px;
+    text-align: left;
+    
+    color: #fff1b0;
+    background-color: rgba(106, 94, 67, .5);
+}
+.life-cover p {
+    margin-bottom: 10px;
+
+    line-height: 16px;
+}
+.life-cover span {
+    float: left;
+}
+.guidance-zb-item {
+    float: left;
+    height: 696px;
+    width: 961px;
+    position: relative;
+}
+
+
+
+
+
+
 
 .side-need-kown::-webkit-scrollbar {
     width: 12px;

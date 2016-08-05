@@ -1,8 +1,4 @@
-function Carousel (doc, containerCN, imgBoxCN, Lbtn, Rbtn, offsets, time) {
-    var container = doc.querySelector('.' + containerCN),
-        imgBox    = doc.querySelector('.' + imgBoxCN),
-        leftBtn   = doc.querySelector('.' + Lbtn),
-        rightBtn  = doc.querySelector('.' + Rbtn),
+function Carousel (container, imgBox, leftBtn, rightBtn, offsets, time) {
         index     = 0,
         timer;
     function switchPics (offset) {
@@ -44,16 +40,42 @@ function Carousel (doc, containerCN, imgBoxCN, Lbtn, Rbtn, offsets, time) {
     container.addEventListener('mouseover', stopCarousel);
     container.addEventListener('mouseout', playCarousel);
 }
-Carousel(document, 'img-container', 'img-box', 'img-left', 'img-right', 428, 3000);
+Carousel($('.img-container')[0], $('.img-box')[0], $('.img-left')[0], $('.img-right')[0], 428, 3000);
+var zbCon    = $('.zb-life-img');
+var zbImgBox = $('.life-img-box');
+var zbLbtn   = $('.life-lbtn');
+var zbRbtn   = $('.life-rbtn');
+for (var i = 0; i < zbCon.length; i++) {
+    Carousel(zbCon[i], zbImgBox[i], zbLbtn[i], zbRbtn[i], 664, 3000);
+};
+
 function checkout () {
-    var nav = $('.guidance-nav-item');
-    var warp = $('.guidance-content-wrap')[0];
-    for (var i = 0; i < nav.length; i++) {
-        nav[i].addEventListener('click', (function (n) {
+    var glNav = $('.guidance-nav-item'),
+        zbNav = $('.zb-nav-item');
+    var warp = $('.guidance-content-wrap');
+    var btn = $('.guid-btn');
+    var glContain = $('.cqupt-gonglue');
+    for (var i = 0; i < glNav.length; i++) {
+        glNav[i].addEventListener('click', (function (n) {
             return function () {
-                warp.style.left = -n * 961 + 'px';
+                warp[0].style.left = -n * 961 + 'px';
             }
         })(i), false);
     }
+    for (var i = 0; i < zbNav.length; i++) {
+        zbNav[i].addEventListener('click', (function (n) {
+            return function () {
+                warp[1].style.left = -n * 961 + 'px';
+            }
+        })(i), false);
+    }
+    btn[0].addEventListener('click', function () {
+        glContain[1].style.top = '-858px';
+        glContain[0].style.top = '116px';
+    })
+    btn[1].addEventListener('click', function () {
+        glContain[0].style.top = '-858px';
+        glContain[1].style.top = '116px';
+    })
 }
 checkout();
