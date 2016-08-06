@@ -53,23 +53,10 @@ th {
     overflow: hidden;
 }
 .guid-btn {
+    float: left;
     height: 100%;
     width: 160px;
     cursor: pointer;
-}
-.zb-btn {
-    float: left;
-    
-    text-align: center;
-    
-    box-shadow: 0px -4px 4px #62d0ce inset;
-
-    color: #fff;
-    background-image: url(../img/gonglue/lbtn.png);
-    background-repeat: repeat;
-}
-.gl-btn {
-    float: left;
     
     text-align: center;
 
@@ -77,6 +64,14 @@ th {
 
     color: #f3860c;
     background-image: url(../img/gonglue/rbtn.png);
+    background-repeat: repeat;
+    transition: color .5s, background-image .5s;
+}
+.guid-btn-active {
+    box-shadow: 0px -4px 4px #62d0ce inset;
+    
+    color: #fff;
+    background-image: url(../img/gonglue/lbtn.png);
     background-repeat: repeat;
 }
 .cqupt-gonglue {
@@ -86,20 +81,22 @@ th {
     transition: top 1s;
 }
 .guidance-nav {
+    height: 56px;
     position: relative;
     z-index: 6;
     text-align: center;
+    overflow: hidden;
 }
 .guidance-nav:after {
     content: "";
     display: table;
     clear: both;
 }
-.guidance-nav li {
+.guidance-nav-item {
     float: left;
 
     width: 173px;
-    margin-right: 19px;
+    margin-top: 14px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
@@ -113,9 +110,15 @@ th {
     background-image: url(../img/gonglue/btnbg.png);
     background-repeat: repeat;
     cursor: pointer;
+    transition: height 1s;
 }
-.guidance-nav-active {
-    width: 
+.guidance-nav-item:nth-child(2) {
+    margin-left: 17px;
+    margin-right: 19px;
+}
+.guidance-nav-item:nth-child(4) {
+    margin-left: 19px;
+    margin-right: 19px;
 }
 .guidance-main {
     position: relative;
@@ -385,9 +388,28 @@ th {
 .qq-grounp {
     overflow-y: scroll;
 }
-.guidance-nav-zb li {
+.zb-nav-item:nth-child(2) {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+.zb-nav-item {
+    float: left;
+
     width: 302px;
-    margin-right: 18px;
+    margin-top: 14px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    font-size: 20px;
+    line-height: 43px;
+    text-align: center;
+    list-style: none;
+
+    color: #ffc91f;
+    background: linear-gradient(to bottom, #fff0c0, #ffe290);
+    background-image: url(../img/gonglue/btnbg.png);
+    background-repeat: repeat;
+    cursor: pointer;
 }
 .zb-life-img {
     position: relative;
@@ -459,7 +481,20 @@ th {
     width: 961px;
     position: relative;
 }
-
+.gl-nav-active {
+    height: 57px;
+    width: 195px;
+    margin-top: 0px;
+    line-height: 57px;
+}
+.zb-nav-active {
+    height: 57px;
+    width: 327px;
+    margin-right: 0px;
+    margin-top: 0px;
+    line-height: 57px;
+    background-image: url(../img/gonglue/zbnav.png);
+}
 
 
 

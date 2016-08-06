@@ -58,6 +58,10 @@ function checkout () {
     for (var i = 0; i < glNav.length; i++) {
         glNav[i].addEventListener('click', (function (n) {
             return function () {
+                for (var j = 0; j < glNav.length; j++) {
+                    glNav[j].className = 'guidance-nav-item';
+                }
+                glNav[n].className += ' gl-nav-active';
                 warp[0].style.left = -n * 961 + 'px';
             }
         })(i), false);
@@ -65,15 +69,23 @@ function checkout () {
     for (var i = 0; i < zbNav.length; i++) {
         zbNav[i].addEventListener('click', (function (n) {
             return function () {
+                for (var j = 0; j < zbNav.length; j++) {
+                    zbNav[j].className = 'zb-nav-item';
+                }
+                zbNav[n].className += ' zb-nav-active';
                 warp[1].style.left = -n * 961 + 'px';
             }
         })(i), false);
     }
     btn[0].addEventListener('click', function () {
+        btn[0].className += ' guid-btn-active';
+        btn[1].className = 'zb-btn guid-btn';
         glContain[1].style.top = '-858px';
         glContain[0].style.top = '116px';
     })
     btn[1].addEventListener('click', function () {
+        btn[1].className += ' guid-btn-active';
+        btn[0].className = 'zb-btn guid-btn';
         glContain[0].style.top = '-858px';
         glContain[1].style.top = '116px';
     })
