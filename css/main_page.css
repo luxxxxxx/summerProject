@@ -259,7 +259,7 @@ body {
 #main #banner-wrp {
 	margin-top: 50px;
 }
-#main #banner-wrp  {
+#main #banner-wrp {
 }
 #main #banner-wrp .banner {
 	width: 1010px;
@@ -268,22 +268,22 @@ body {
 	animation: shakeY 10s linear;
 	animation-iteration-count: infinite;
 }
-#main #banner-wrp .banner .isLand-con{
+#banner-wrp .banner .isLand-con {
 	position: relative;
 }
-#main #banner-wrp .banner .isLand-con #islandImg {
+#banner-wrp .banner .isLand-con #islandImg {
 	position: absolute;
 	z-index: 4;
 	width: 1010px;
 	height: 745px;
 }
-#main #banner-wrp .banner .isLand-con #countDown {
+#banner-wrp .banner .isLand-con #countDown {
 	z-index: 15;
 	position: absolute;
 	left: 211px;
 	top: 365px;
 }
-#main #banner-wrp .banner .isLand-con #title {
+#banner-wrp .banner .isLand-con #title {
 	z-index: 10;
 	position: absolute;
 	top: 0;
@@ -475,22 +475,18 @@ body {
 	height: 231px;
 	background: url('../img/QRcodeLeft.png') no-repeat center center ;
 }
-
-
-
-#map-wrp {
-
+#main #map-wrp {
+	position: relative;
+	margin-top: -20px;
 }
-#map-wrp #map {
+
+#main #map-wrp #map-con {
+	position: relative;
 	width: 1020px;
 	height: 550px;
 	margin: 0 auto;
-	background-color: yellow
 }
-#main #map-wrp {
-	margin-top: -20px;
-}
-#main #map-wrp .flag {
+#main #map-wrp #map-con .flag {
 	position: absolute;
 	bottom: 528px;
 	left: 406px;
@@ -498,13 +494,7 @@ body {
 	height: 150px;
 	background: url('../img/mapFlag.png') no-repeat center center;
 }
-#main #map-wrp .container {
-	z-index: 5;
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-#main #map-wrp .container .mapFrame {
+#main #map-wrp #map-con .mapFrame {
 	z-index: 10;
 	position: absolute;
 	width: 100%;
@@ -512,26 +502,237 @@ body {
 	background: url('../img/paperFrames.png') no-repeat center center;
 	cursor: default;
 }
-#main #map-wrp .container .mapFrame .signBox {
+#main #map-wrp #map-con .map-con {
+	z-index: 8;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 980px;
+    height: 499px;
+    overflow: hidden;
+    background-color: #4dccc5;
+}
+#main #map-wrp #map-con .map-con .img {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 980px;
+	height: 499px;
+}
+#main #map-wrp #map-con .map-con .img img {
+	width: 100%;
+	height: 100%;
+}
+#main #map-wrp #map-con .map-con.con2 {
+	z-index: 15;
+	background-color: transparent;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	cursor: default;
+	overflow: hidden;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #positionArrowCon {
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen .positionArrow {
 	position: absolute;
-	bottom: 56px;
+	width: 47px;
+	height: 58px;
+	background: url('../img/positionArrow.png') no-repeat center center;
+	cursor: pointer;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #oldGate {
+	left: 344px;
+	top: 320px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #taiji {
+	left: 356px;
+	top: 108px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #oldGround {
+	left: 366px;
+	top: 198px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #xinke {
+	left: 468px;
+	top: 298px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #yifu {
+	left: 168px;
+	top: 186px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #newGate {
+	left: 208px;
+	top: 288px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #redHouse {
+	left: 468px;
+	top: 208px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #build4 {
+	left: 156px;
+	top: 148px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #lover {
+	left: 536px;
+	top: 238px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #oldLibery {
+	left: 468px;
+	top: 238px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #libery {
+	left: 243px;
+	top: 255px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #wan80 {
+	left: 380px;
+	top: 296px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #build2 {
+	left: 390px;
+	top: 238px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #chqs {
+	left: 436px;
+	top: 256px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #bascGround {
+	left: 396px;
+	top: 168px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #fyGround {
+	left: 280px;
+	top: 88px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #build3 {
+	left: 218px;
+	top: 123px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #build8 {
+	left: 218px;
+	top: 66px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #positionDesc {
+	position: absolute;
+	left: 186px;
+	top: 342px;
+	width: 95px;
+	height: 40px;
+	background: url('../img/positionDescBg.png') no-repeat center center;
+	text-align: center;
+	line-height: 40px;
+	font-size: 16px;
+	color: #000;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen .signBox {
+	position: absolute;
+	bottom: 29px;
 	right: 29px;
-	width: 50px;
+	width: 36px;
 	height: 100px;
 }
-#main #map-wrp .container .mapFrame .signBox .sign {
+#main #map-wrp #map-con .map-con.con2 #mapScreen .signBox .sign {
 	width: 36px;
 	height: 39px;
 	cursor: pointer;
 	background-repeat: no-repeat;
 	background-position: center;
 }
-#main #map-wrp .container .mapFrame .signBox .sign#plus {
+#main #map-wrp #map-con .map-con.con2 #mapScreen .signBox .sign#plus {
 	background: url('../img/plusSign.png');
 	margin-bottom: 10px;
 }
-#main #map-wrp .container .mapFrame .signBox .sign#minus {
+#main #map-wrp #map-con .map-con.con2 #mapScreen .signBox .sign#minus {
 	background: url('../img/minusSign.png');
+}
+
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description {
+	display: none;
+	position: relative;
+	width: 466px;
+	height: 307px;
+	margin: 56px auto;
+	padding: 28px;
+	background-color: #fff;
+	border-radius: 4px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .close {
+	position: absolute;
+	right: -22px;
+	top: -22px;
+	width: 45px;
+	height: 45px;
+	background: url('../img/close.png') no-repeat center center;
+	transition: .3s all ease;
+	cursor: pointer;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .close:hover {
+	transform: rotate(90deg);
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo {
+	position: relative;
+	width: 100%;
+	height: 188px;
+	overflow: hidden;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo .arrow {
+	z-index: 1;
+	position: absolute;
+	top: 63px;
+	width: 46px;
+	height: 61px;
+	cursor: pointer;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo .arrow.next {
+	background: url('../img/nextArrow.png') no-repeat center center;
+	right: 0;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo .arrow.prev {
+	display: none;
+	background: url('../img/prevArrow.png') no-repeat center center;
+	left: 0;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo #lunbo-con {
+	position: relative;
+	left: 0;
+	width: 200%;
+	height: 100%;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo #lunbo-con li {
+	float: left;
+	width: 466px;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo #lunbo-con li:nth-child(1) {
+	background: black;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo #lunbo-con li:nth-child(2) {
+	background-color: red;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .desc {
+	display: block;
+	width: 100%;
+	height: 82px;
+	margin-top: 10px;
+	text-align: center;
+}	
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .close .desc #seneryTitle {
+	text-align: center;
+	font-size: 18px;
+}
+#main #map-wrp #map-con .map-con.con2 #mapScreen #description .close .desc #seneryDesc {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
 }
 #main #map-wrp .container .map-con {
 	z-index: 8;
@@ -541,7 +742,7 @@ body {
 	width: 980px;
 	height: 499px;
 	overflow: hidden;
-	background-color: #4dccc5
+	background-color: #4dccc5;
 }
 #main #map-wrp .container .map-con .con2 {
 	position: relative;
@@ -564,10 +765,7 @@ body {
 	left: 25px;
 	top: 10px;
 }
-#main #map-wrp .container .map-con .con2 .positionBox#oldLibery {
-	left: 506px;
-	top: 330px;
-}
+
 #main #map-wrp .container .map-con .con2 .positionBox#bla {
 	left: 257px;
 	top: 82px;
@@ -757,6 +955,8 @@ body {
 	height: 108px;
 	background: url('../img/returnTop.png') no-repeat center center;
 	cursor: pointer;
+	transition: .75s opacity linear;
+	opacity: 1;
 }
 
 

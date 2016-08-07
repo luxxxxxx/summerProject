@@ -1,0 +1,33 @@
+#fengcai-con {
+	width: 967px;
+	height: 850px;
+	margin: 0 auto;
+	padding: 33px 18px 18px;
+	background-color: #fffadd;
+}
+#fengcai-con .btn-con {
+	width: 638px;
+	margin: 9px auto;
+}
+#fengcai-con .btn-con .btn {
+	float: left;
+	width: 153px;
+	height: 66px;
+	background: 
+	line-height: 66px;
+	text-align:  center;
+	background: url('../img/btn-bg.png') center;
+	background-repeat: repeat;
+}
+#fengcai-con .btn-con .btn.select {
+	background: url('../img/btn-select-bg.png') center;
+}
+#fengcai-con .btn-con .btn.s-btn {
+	width: 166px;
+
+}
+#fengcai-con .btn-con .btn a {
+	font-size: 24px;
+	color: #f89316;
+	line-height: 66px;
+}

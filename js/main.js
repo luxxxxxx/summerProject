@@ -52,77 +52,292 @@ for (var i = 0; i < BtnArray.length; i++) {
 	}
 }
 
-// var map = $('#map');    //地图   放大缩小  以及   拖拽 功能
-// var rate = 1;
-// var plus = $('#plus');
-// var minus = $('#minus');
-// var mapScreen = $('.mapFrame')[0];
-// var positionDescArry = $('.positionBox');
-// var originW = parseInt(getStyle(map,'width'));
-// var originH = parseInt(getStyle(map,'height'));
-// for (var i = 0; i < positionDescArry.length; i++) {
-// 	var This = positionDescArry[i];
-// 	This.originLeft = parseInt(getStyle(This,'left'));
-// 	This.oringinTop = parseInt(getStyle(This,'top'));
-// }
-// plus.onclick = function () {
-// 	if  (rate <= 1.1 && rate >= 1) {
-// 		rate += 0.1;
-// 	}
-// 	move(map,{ width: originW * rate + 'px', height: originH * rate + 'px' }, 250 , 'easeOut');
-// 	for (var i = 0; i < positionDescArry.length; i++) {
-// 		var This = positionDescArry[i];
-// 		move(This,{left:This.originLeft*rate +'px',top:This.oringinTop*rate + 'px'},250 , 'easeOut');
-// 	}
-// };
-// minus.onclick = function () {
-// 	if  (rate >= 1 && rate != 1) {
-// 		rate -= 0.1;
-// 	}
-// 	move(map,{ width: originW * rate + 'px', height: originH * rate + 'px' }, 250 , 'easeOut');
-// 	for (var i = 0; i < positionDescArry.length; i++) {
-// 		var This = positionDescArry[i];
-// 		move(This,{left:This.originLeft*rate +'px',top:This.oringinTop*rate + 'px'},250 , 'easeOut');
-// 	}
-// };
-
-// mapScreen.onmousedown = function (e) {
-// 	var ev = e || window.event; 
-// 	var startL = parseInt(getStyle(map,'left'));  // map 的left
-// 	var startT = parseInt(getStyle(map,'top'));    // map 的 top
-// 	var startX = ev.clientX;
-// 	var startY = ev.clientY;
-// 	for (var i = 0; i < positionDescArry.length; i++) {
-// 		var This = positionDescArry[i];
-// 		This.startTop = parseInt(getStyle(This,'top'));
-// 		This.startLeft = parseInt(getStyle(This,'left'));
-// 	}
-// 	this.onmousemove = function (e) {
-// 		var ev = e || window.event;
-// 		var x_ = ev.clientX - startX;
-// 		var y_ = ev.clientY - startY;
-// 		map.style.left = startL + x_ + 'px';
-// 		map.style.top = startT + y_ + 'px';
-// 		console.log(positionDescArry[0].startLeft);
-// 		positionDescArry[0].style.left = positionDescArry[0].startLeft + x_ + 'px';
-// 		positionDescArry[0].style.top = positionDescArry[0].startTop + y_ + 'px';
-// 		positionDescArry[1].style.left = positionDescArry[1].startLeft + x_ + 'px';
-// 		positionDescArry[1].style.top = positionDescArry[1].startTop + y_ + 'px';
-// 	};
-// 	this.onmouseup = function () {
-// 		this.onmousemove = null;
-// 	}
-// }
+var map = $('#resizeMap');
+var mapScreen = $('#mapScreen');
+var rate = 1;
+var fixRate;
+var plus = $('#plus');
+var minus = $('#minus');
+var positionDesc = $('#positionDesc');
+var originDescL = positionDesc.offsetLeft;
+var originDescT = positionDesc.offsetTop;
+var positionArrowScreen = $('#positionArrowCon');
+var seneryT = $('#seneryTitle');
+var seneryDesc = $('#seneryDesc');
 
 
+var positionDescArry = $('.positionArrow');     //所有 箭头
+var originW = parseInt(getStyle(map,'width'));
+var originH = parseInt(getStyle(map,'height'));
 
+// seneryT.innerHTML = positionArrow[0].getAttribute('name');
+// seneryDesc.innerHTML = positionArrow[0].getAttribute('desc');
+var positionDescArryL = positionDescArry.length;   //箭头数量
+for (var i = 0; i < positionDescArryL; i++) {      //初始化 箭头数据  箭头 原本 left，top（方便计算位置）增添鼠标移入事件
+	var This = positionDescArry[i];
+	This.index = i;
+	This.originLeft = parseInt(getStyle(This,'left'));
+	This.oringinTop = parseInt(getStyle(This,'top'));
+	This.onmouseenter = function () {
+		for (var i = 0; i < positionDescArryL; i++) {
+			removeClass(positionDescArry[i],'currentArrow')
+		}
+		addClass(this,'currentArrow');
+		var l = this.offsetLeft - 22;
+		var t = this.offsetTop + 54;
+		var name = this.getAttribute('name');
+		move(positionDesc,{left:l+'px',top:t+'px'},100,'linear');
+		positionDesc.innerHTML = name;
+	};
+	This.onclick = function () {                      //增添  点击  弹出简介弹框事件
+		lunbo.style.display = 'block';
+		lunboCon.index = this.index;
+		lunboCon.style.left = this.index * lunboW * -1 + 'px';
+		if (lunboCon.index == 0) {
+			descPrevA.style.display = 'none';
+			descnextA.style.display = 'block';
+		} else if ( lunboCon.index == positionDescArryL) {
+			descNextA.style.display = 'none'
+			descPrevA.style.display = 'block';
+		} else {
+			descNextA.style.display = 'block';
+			descPrevA.style.display = 'block'
+		}
+		seneryT.innerHTML = this.getAttribute('name');
+		seneryDesc.innerHTML = this.getAttribute('desc');
+		mapScreen.onmousedown = null;
+	}
+}
+
+var lunbo = $('#description');    
+var lunboCon = $('#lunbo-con');   //轮播部分
+lunboCon.style.width = 100 * positionDescArryL + '%';    //初始化 容器  宽度
+var descPrevA = $('#descPrevA');    //向前箭头
+var descnextA = $('#descNextA');    //向后箭头
+var lunboW = 466;    //每张图片 的 宽度
+var originMapL = map.offsetLeft;
+var originMapT = map.offsetTop;
+var originMapR = parseInt(getStyle(map,'right'));
+var originMapB = map.offsetBottom;
+var closeBtn = $('.close')[0];
+closeBtn.onclick = function () {
+	lunbo.style.display = 'none';
+	mapScreen.onmousedown = function (e) {    
+	var ev = e || window.event; 
+	var startL = map.offsetLeft;  // map 的left
+	var startT = map.offsetTop;    // map 的 top
+	var startX = ev.clientX;
+	var startY = ev.clientY;
+	var maxDistance = 50; 
+	mapScreenW = this.offsetWidth;
+	mapScreenH = this.offsetHeight;
+	var minLeft = -(map.offsetWidth - mapScreenW);
+	var minTop = -(map.offsetHeight - mapScreenH);
+		document.onmousemove = function (e) {
+			var ev = e || window.event;
+			var x_ = ev.clientX - startX;
+			var y_ = ev.clientY - startY;
+			var mapLeft = map.offsetLeft;
+			var mapTop = map.offsetTop;
+			console.log(map.offsetLeft + '&' + maxDistance + '&' + x_);
+			if (mapLeft >= 0 && x_ > 0) {
+				map.style.left =  '0px';
+			}else if (mapLeft <= minLeft && x_<0 ) {
+				map.style.left = minLeft + 'px';
+			}else {
+				var xMove = startL + x_;
+				positionArrowScreen.style.left = xMove + 'px';
+				map.style.left = xMove + 'px';
+			};
+			if (mapTop >= 0 && y_ > 0 ) {
+				map.style.top = '0px';			
+			}else if (mapTop <= minTop && y_ < 0) {
+				map.style.top = minTop + 'px';	
+			}else {
+				var yMove = startT + y_ 
+				map.style.top = yMove + 'px';
+				positionArrowScreen.style.top = yMove + 'px';	
+			}
+		};
+		document.onmouseup = function () {
+			this.onmousemove = null;
+		};
+	}
+
+}
+lunboCon.index = 0;
+for (var i = 1; i < positionDescArryL + 1 ; i++) {    //自动加载图片 
+	var oLi = document.createElement('li');
+	oLi.style.background = 'url("./img/position'+ positionDescArry[i - 1].getAttribute('number') +'.jpg") no-repeat center center';
+	lunboCon.appendChild(oLi);
+}
+
+
+descNextA.onclick = function () {         // 向右箭头   
+	var x_ = 0;
+	lunboCon.index ++;
+	if (lunboCon.index >= positionDescArryL - 1) {
+		lunboCon.index = positionDescArryL -1;
+		descNextA.style.display = 'none';
+	};
+	if (lunboCon.index > 0) {
+		descPrevA.style.display = 'block';  //aaaaaaaaaaaa
+	}
+	x_ = lunboCon.index * lunboW * -1;
+	move(lunboCon,{left: x_ + 'px'},300,'easeOut');
+	seneryT.innerHTML = positionDescArry[lunboCon.index].getAttribute('name');
+	seneryDesc.innerHTML = positionDescArry[lunboCon.index].getAttribute('desc');
+	for (var i = 0; i < positionDescArryL; i++) {
+		removeClass(positionDescArry[i],'currentArrow')
+	}
+	addClass(positionDescArry[lunboCon.index],'currentArrow');
+	descfix(targetArrow().offsetLeft,targetArrow().offsetTop);
+}
+descPrevA.onclick = function () {      // 向左箭头
+	var x_ = 0;
+	lunboCon.index --;
+	if (lunboCon.index <= 0) {
+		lunboCon.index = 0;
+		descPrevA.style.display = 'none';     //a  aaaaaa 
+	}else {
+		descNextA.style.display = 'block'
+	}
+	x_ = lunboCon.index * lunboW * -1;
+	move(lunboCon,{left: x_ + 'px'},300,'easeOut');
+	seneryT.innerHTML = positionDescArry[lunboCon.index].getAttribute('name');
+	seneryDesc.innerHTML = positionDescArry[lunboCon.index].getAttribute('desc');
+	for (var i = 0; i < positionDescArryL; i++) {
+		removeClass(positionDescArry[i],'currentArrow')
+	}
+	addClass(positionDescArry[lunboCon.index],'currentArrow');
+	descfix(targetArrow().offsetLeft,targetArrow().offsetTop);
+}
+
+
+
+
+
+plus.onclick = function () {
+	var fixL = 0;
+	var fixR = 0;     //用来修正地图放大缩小后可能产生的误差
+
+	if  (rate <= 1.9 && rate >= 1) {
+		rate += 0.3;
+		fixRate = rate.toFixed(1);
+	}
+	if ( fixRate == 1.3 ) {
+		fixL = 6;
+		fixR =12;
+	} else if ( fixRate == 1.6 ) {
+		fixL = 15;
+		fixR = 20;
+	} else if ( fixRate == 1.9 ) {
+		fixL = 20;
+		fixR = 30;
+	}
+
+	move( map,{ width: originW * rate + 'px', height: originH * rate + 'px' }, 200 , 'easeOut' );
+	for (var i = 0; i < positionDescArry.length; i++) {
+		var This = positionDescArry[i];
+		move(This,{left:This.originLeft*rate + fixL +'px',top:This.oringinTop*rate + fixR + 'px'},200 , 'easeOut');
+	};
+	var l = targetArrow().originLeft*rate + fixL;
+	var t = targetArrow().oringinTop*rate + fixR;
+	descfix(l,t);
+};
+minus.onclick = function () {
+	var fixL = 0;
+	var fixR = 0; 
+	if  ( rate >= 1 && rate != 1 ) {
+		rate -= 0.3;
+		fixRate = rate.toFixed(1);
+	}
+	if ( fixRate == 1.3 ) {
+		fixL = 6;
+		fixR =12;
+	} else if ( fixRate == 1.6 ) {
+		fixL = 15;
+		fixR = 20;
+	} else if ( fixRate == 1.9 ) {
+		fixL = 20;
+		fixR = 30;
+	}
+	move(map,{ width: originW * rate + fixL + 'px', height: originH * rate + fixR + 'px' }, 200 , 'easeOut');
+
+	for ( var i = 0; i < positionDescArry.length; i++ ) {
+		var This = positionDescArry[i];
+		move(This,{left:This.originLeft * rate + fixL +'px',top:This.oringinTop*rate + fixR + 'px'},200 , 'easeOut');
+	}
+	var l = targetArrow().originLeft*rate;
+	var t = targetArrow().oringinTop*rate;
+	descfix(l,t);
+};
+ 
+
+mapScreen.onmousedown = function (e) {    
+	var ev = e || window.event; 
+	var startL = map.offsetLeft;  // map 的left
+	var startT = map.offsetTop;    // map 的 top
+	var startX = ev.clientX;
+	var startY = ev.clientY;
+	var maxDistance = 50; 
+	mapScreenW = this.offsetWidth;
+	mapScreenH = this.offsetHeight;
+	var minLeft = -(map.offsetWidth - mapScreenW);
+	var minTop = -(map.offsetHeight - mapScreenH);
+	document.onmousemove = function (e) {
+		var ev = e || window.event;
+		var x_ = ev.clientX - startX;
+		var y_ = ev.clientY - startY;
+		var mapLeft = map.offsetLeft;
+		var mapTop = map.offsetTop;
+		console.log(map.offsetLeft + '&' + maxDistance + '&' + x_);
+		if (mapLeft >= 0 && x_ > 0) {
+			map.style.left =  '0px';
+		}else if (mapLeft <= minLeft && x_<0 ) {
+			map.style.left = minLeft + 'px';
+		}else {
+			var xMove = startL + x_;
+			positionArrowScreen.style.left = xMove + 'px';
+			map.style.left = xMove + 'px';
+		};
+		if (mapTop >= 0 && y_ > 0 ) {
+			map.style.top = '0px';			
+		}else if (mapTop <= minTop && y_ < 0) {
+			map.style.top = minTop + 'px';	
+		}else {
+			var yMove = startT + y_ 
+			map.style.top = yMove + 'px';
+			positionArrowScreen.style.top = yMove + 'px';	
+		}
+	};
+	document.onmouseup = function () {
+		this.onmousemove = null;
+	}
+}
+
+
+function descfix (l,t) {    //移动说明文字   l: 目标箭头left t：目标箭头top
+	var targetL = l -22;
+	var targetT = t +54;
+	move(positionDesc,{left:targetL + 'px',top:targetT + 'px'},200,'easeOut');
+}
+function targetArrow() {    //获取 目标箭头
+	var target;
+	for (var i = 0; i < positionDescArry.length; i++) {
+		if (hasClass(positionDescArry[i],'currentArrow')) {
+			target = positionDescArry[i];
+		}
+	}
+	return target;
+}
 console.log('// ---------------------部分bug还在抢修中----------------------敬请期待')
 
 
 
 
 
-// var returnTop = $('#returnTop');  //能够兼容IE8 的 return to top
+
 // returnTop.onclick = function () {
 // 	if (document.body.scrollTop != 0) {    
 // 			var body = document.body;
@@ -130,15 +345,15 @@ console.log('// ---------------------部分bug还在抢修中-------------------
 // 			var body = document.documentElement;   //ie8获取距离页面顶端方式不一样
 // 		}
 // 	if ( body.scrollTop != 0) {
-// 		var distancePiece = body.scrollTop/25;
-// 		var timer = setInterval(function () {
-// 		if ( body.scrollTop <= distancePiece ) {
-// 			body.scrollTop = 0;
-// 			clearInterval(timer);
-// 		}else {
-// 			body.scrollTop -= distancePiece;
-// 		}
-// 	},20)
+	// 	var distancePiece = body.scrollTop/25;
+	// 	var timer = setInterval(function () {
+	// 	if ( body.scrollTop <= distancePiece ) {
+	// 		body.scrollTop = 0;
+	// 		clearInterval(timer);
+	// 	}else {
+	// 		body.scrollTop -= distancePiece;
+	// 	}
+	// },20)
 // 	}
 // }
 	var goTopBtn = $('#goTop');
@@ -192,8 +407,45 @@ console.log('// ---------------------部分bug还在抢修中-------------------
 
 
 
+// window.onscroll = function () {
+// 	var top = document.body.scrollTop || document.documentElement.scrollTop;
+// 	console.log(top);
+// 	var a = true;
+// 	if (top > 1000) {
+// 		if (a) {
+// 			a = false;
+// 			move(returnTop,{opacity:1,bottom:})
+// 		}
+// 	}
+// }
+var returnTop = $('#goTop'); 
+var onOff = true;
 window.onscroll = function () {
 	var top = document.body.scrollTop || document.documentElement.scrollTop;
+	console.log(top);
+	if (top > 1000) {
+		if (onOff) {
+			slideOut();
+		}
+	}else if (top < 1000) {
+		if (!onOff) {
+			slideIn();
+		}
+	}	
+}
+
+
+function slideIn () {
+	returnTop.style.opacity = 0;
+	onOff = true;
+	setTimeout(function () {
+		returnTop.style.display = 'none';
+	},750)
+}
+function slideOut () {
+	returnTop.style.display = 'block'
+	returnTop.style.opacity = 1;
+	onOff = false;
 }
 
 // var main = $('#main');
@@ -214,8 +466,8 @@ window.onscroll = function () {
 // 	move(leaf,{top:'500px'},500,'linear');
 // }
 
-//叶子动画 
-var leavesArry = $('.leaves');
+//叶子动画   叶子的初始 left随机  动画延迟随机 动画持续时间随机 
+var leavesArry = $('.leaves');  
 for (var i = 0; i < leavesArry.length; i++) {
 	leavesArry[i].style.left = Math.random()*winWidth() + 'px';
 	var n = Math.ceil(Math.random()*3);

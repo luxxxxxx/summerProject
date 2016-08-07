@@ -78,12 +78,13 @@ th {
     position: absolute;
     top: 116px;
 
-    transition: top 1s;
+    transition: top 1s, left 1s, right 1s;
 }
 .guidance-nav {
-    height: 56px;
+    height: 64px;
     position: relative;
-    z-index: 6;
+    // z-index: 6;
+    top: 7px;
     text-align: center;
     overflow: hidden;
 }
@@ -95,13 +96,14 @@ th {
 .guidance-nav-item {
     float: left;
 
+    height: 50px;
     width: 173px;
     margin-top: 14px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
     font-size: 20px;
-    line-height: 43px;
+    line-height: 47px;
     text-align: center;
     list-style: none;
 
@@ -110,7 +112,6 @@ th {
     background-image: url(../img/gonglue/btnbg.png);
     background-repeat: repeat;
     cursor: pointer;
-    transition: height 1s;
 }
 .guidance-nav-item:nth-child(2) {
     margin-left: 17px;
@@ -122,6 +123,7 @@ th {
 }
 .guidance-main {
     position: relative;
+    z-index: 7;
     height: 696px;
     width: 961px;
     border: 1px solid #fff5c4;
@@ -144,6 +146,7 @@ th {
     clear: both;
 }
 .guidance-content {
+    position: relative;
     float: left;
     height: 696px;
     width: 961px;
@@ -239,9 +242,9 @@ th {
 .img-box {
     position: absolute;
     height: 246px;
-    width: 1284px;
+    width: 1712px;
 
-    transition: left 1.5s;
+    transition: left 1.3s;
 }
 .img-box:after {
     content: "";
@@ -260,6 +263,10 @@ th {
 
     height: 72px;
     width: 55px;
+    border-radius: 5px;
+
+    line-height: 72px;
+    text-align: center;
 
     cursor: pointer;
     background-color: #ffeaab;
@@ -268,8 +275,16 @@ th {
 .img-left {
     left: 189px;
 }
+.img-left img {
+    display: inline-block;
+    margin-top: 12px;
+}
 .img-right {
     right: 169px;
+}
+.img-right img {
+    display: inline-block;
+    margin-top: 8px;
 }
 .dom-cover {
     float: left;
@@ -294,6 +309,29 @@ th {
 
     background-color: #fff7c8;
 }
+// .scrollbar {
+//     position: absolute;
+//     top: 1px;
+//     right: 1px;
+
+//     height: 691px;
+//     width: 8px;
+//     border-left: 2px solid #ffe85d;
+//     border-right: 2px solid #ffe85d;
+
+//     background-color: #ffee89;
+// }
+// .scrollbar-btn {
+//     position: absolute;
+//     left: -1px;
+
+//     height: 70px;
+//     width: 10px;
+//     border-radius: 5px;
+    
+//     cursor: pointer;
+//     background-color: #fff9d3;
+// }
 .side-bar-item {
     height: 118px;
 
@@ -395,13 +433,14 @@ th {
 .zb-nav-item {
     float: left;
 
+    height: 50px;
     width: 302px;
     margin-top: 14px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
     font-size: 20px;
-    line-height: 43px;
+    line-height: 47px;
     text-align: center;
     list-style: none;
 
@@ -413,6 +452,8 @@ th {
 }
 .zb-life-img {
     position: relative;
+    z-index: 5;
+
     height: 447px;
     width: 664px;
     margin-top: 106px;
@@ -429,6 +470,8 @@ th {
     width: 76px;
     border-radius: 5px;
 
+    text-align: center;
+
     cursor: pointer;
     box-shadow: -1px -1px 1px #fed696 inset;
     background-color: #ffeaab;
@@ -439,7 +482,7 @@ th {
     height: 447px;
     width: 1992px;
 
-    transition: left 1.5s;
+    transition: left 1.3s;
 }
 .life-img-box img {
     float: left;
@@ -449,12 +492,24 @@ th {
 .life-lbtn {
     left: 47px;
 }
+.life-lbtn img {
+    display: inline-block;
+
+    height: 63px;
+    margin-top: 17px;
+}
 .life-rbtn {
     right: 54px;
 }
+.life-rbtn img {
+    display: inline-block;
+
+    height: 59px;
+    margin-top: 24px;
+}
 .life-cover {
     float: left;
-    z-index: 5;
+    z-index: 4;
     
     height: 157px;
     width: 636px;
@@ -486,6 +541,9 @@ th {
     width: 195px;
     margin-top: 0px;
     line-height: 57px;
+    background-image: url(../img/gonglue/zbnav.png);
+    background-size: 195px 121px;
+    background-repeat: no-repeat;
 }
 .zb-nav-active {
     height: 57px;
