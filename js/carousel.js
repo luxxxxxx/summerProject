@@ -8,13 +8,30 @@ function addEvent (ele, event, hanlder) {
     }
 }
 
-function Carousel (container, imgBox, leftBtn, rightBtn, offsets, time, num) {
+function navCheckout (ele, item, itemCN, activeCN, event) {
+    addEvent(ele, event, function (e) {
+        if (e.target && e.target.tagName.toUpperCase() === 'LI') {
+            if (!hasClass(e.target, activeCN)) {
+                clearClassName(item, itemCN);
+                e.target.className += ' ' + activeCN;
+            }
+        }
+    })
+}
+
+function clearClassName (ele, classN) {
+    for (var i = 0; i < ele.length; i ++) {
+        ele[i].className = classN;
+    }
+}
+
+function Carousel (container, imgBox, leftBtn, rightBtn, offsets, time) {
         var index = 0,
             timer = 0;
     function switchPics (offset) {
         var newPos = parseInt(imgBox.style.left) + offset;
         imgBox.style.left = newPos + 'px';
-        if (newPos < -offsets * (num - 1)) {
+        if (newPos < -offsets * 2) {
             imgBox.style.left = '0px';
         }
         if (newPos > 0) {
@@ -30,11 +47,9 @@ function Carousel (container, imgBox, leftBtn, rightBtn, offsets, time, num) {
         timer = setInterval(click, time);
     }
     playCarousel();
-
     function stopCarousel () {
         clearInterval(timer);
     }
-
     leftBtn.addEventListener('mouseover', function () {
         stopCarousel();
     })
@@ -58,48 +73,52 @@ function Carousel (container, imgBox, leftBtn, rightBtn, offsets, time, num) {
     container.addEventListener('mouseover', stopCarousel);
     container.addEventListener('mouseout', playCarousel);
 }
-Carousel($('.img-container')[0], $('.img-box')[0], $('.img-left')[0], $('.img-right')[0], 428, 2300, 4);
-var zbCon    = $('.zb-life-img');
-var zbImgBox = $('.life-img-box');
-var zbLbtn   = $('.life-lbtn');
-var zbRbtn   = $('.life-rbtn');
-for (var i = 0; i < zbCon.length; i++) {
-    Carousel(zbCon[i], zbImgBox[i], zbLbtn[i], zbRbtn[i], 664, 2300, 3);
-};
+// 绑定轮播
+(function () {
+    var zbCon    = $('.zb-life-img');
+    var zbImgBox = $('.life-img-box');
+    var zbLbtn   = $('.life-lbtn');
+    var zbRbtn   = $('.life-rbtn');
+
+    Carousel($('.img-container')[0], $('.img-box')[0], $('.img-left')[0], $('.img-right')[0], 428, 3000);
+    for (var i = 0; i < zbCon.length; i++) {
+        Carousel(zbCon[i], zbImgBox[i], zbLbtn[i], zbRbtn[i], 664, 3000);
+    }
+})()
 
 function checkout () {
-    var glNav = $('.guidance-nav-item'),
+    var nav = $('.guidance-nav'),
+        glNav = $('.guidance-nav-item');
         zbNav = $('.zb-nav-item');
     var warp = $('.guidance-content-wrap');
     var btn = $('.guid-btn');
     var glContain = $('.cqupt-gonglue');
+    var sidebar = $('.guidance-side-bar'),
+        sidebarItem = $('.side-bar-item');
+    // 导航一
+    navCheckout(nav[0], glNav, 'guidance-nav-item', 'gl-nav-active', 'click');
     for (var i = 0; i < glNav.length; i++) {
         glNav[i].addEventListener('click', (function (n) {
             return function () {
-                for (var j = 0; j < glNav.length; j++) {
-                    glNav[j].className = 'guidance-nav-item';
-                }
-                glNav[n].className += ' gl-nav-active';
                 warp[0].style.left = -n * 961 + 'px';
             }
         })(i), false);
     }
+    // 导航二
+    navCheckout(nav[1], zbNav, 'zb-nav-item', 'zb-nav-active', 'click');
     for (var i = 0; i < zbNav.length; i++) {
         zbNav[i].addEventListener('click', (function (n) {
             return function () {
-                for (var j = 0; j < zbNav.length; j++) {
-                    zbNav[j].className = 'zb-nav-item';
-                }
-                zbNav[n].className += ' zb-nav-active';
                 warp[1].style.left = -n * 961 + 'px';
             }
         })(i), false);
     }
+    // 二级导航
     btn[0].addEventListener('click', function () {
         btn[0].className += ' guid-btn-active';
         btn[1].className = 'zb-btn guid-btn';
         glContain[1].style.top = '-858px';
-        glContain[1].style.right = '-1061px';
+        glContain[1].style.right = '-961px';
         glContain[0].style.top = '116px';
         glContain[0].style.left = '0px';
     })
@@ -107,38 +126,17 @@ function checkout () {
         btn[1].className += ' guid-btn-active';
         btn[0].className = 'zb-btn guid-btn';
         glContain[0].style.top = '-858px';
-        glContain[0].style.left = '-1061px';
+        glContain[0].style.left = '-961px';
         glContain[1].style.top = '116px';
         glContain[1].style.right = '0px';
     })
+    //sidebar
+    console.log(sidebarItem);
+    navCheckout(sidebar[0], sidebarItem, 'side-bar-item', 'side-bar-active', 'click');
 }
-// var nav = $('.guidance-nav'),
-//     glNav = $('.guidance-nav-item');
-//     zbNav = $('.zb-nav-item');
-// var warp = $('.guidance-content-wrap');
-// var btn = $('.guid-btn');
-// var glContain = $('.cqupt-gonglue');
-// navCheckout(nav[0], glNav, 'guidance-nav-item', 'gl-nav-active', 'click');
-// function navCheckout (ele, item, itemCN, activeCN, event) {
-//     addEvent(ele, event, function (e) {
-//         if (e.target && e.target.tagName.toUpperCase() === 'LI') {
-//             if (!hasClass(e.target, activeCN)) {
-//                 for (var i = 0; i < item.length; i ++) {
-//                     console.log(item);
-//                 }
-//                 e.target.className += ' ' + activeCN;
-//             }
-//         }
-//     })
-// }
-
-// function clearClassName (ele, classN) {
-//     for (var i = 0; i < ele.length; i ++) {
-//         ele.className = classN;
-//     }
-// }
-
 checkout();
+
+
 
 // function scrollbar () {
 //     var barCon = $('.scrollbar');
