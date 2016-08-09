@@ -1,0 +1,142 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+#main {
+    height: 1743px;
+    background-size: 100%;
+    background-position: center -88px;
+}
+.content-wrap {
+    position: relative;
+    
+    height: 890px;
+    width: 1002px;
+    padding: 0px 21px 0px 21px;
+    margin: -71px auto 0px;
+    border-radius: 5px;
+
+    background-color: #fffadd;
+    box-shadow: -1px -2px 2px #f2e19e inset;
+}
+
+.content-title {
+    position: absolute;
+    z-index: 4;
+    top: -91px;
+    left: 391px;
+}
+.content {
+    position: relative;
+    z-index: 6;
+    height: 798px;
+    width: 1002px;
+    padding-top: 44px;
+    overflow: hidden;
+    background-color: #fffadd;
+}
+.content-nav {
+    height: 64px;
+    position: relative;
+    top: 7px;
+    text-align: center;
+    overflow: hidden
+}
+.content-nav-item {
+    float: left;
+    
+    height: 50px;
+    width: 173px;
+    margin-top: 14px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    
+    font-size: 20px;
+    line-height: 47px;
+    text-align: center;
+    list-style: none;
+    
+    color: #ffc91f;
+    background: linear-gradient(to bottom, #fff0c0, #ffe290);
+    background-image: url(../img/gonglue/btnbg.png);
+    background-repeat: repeat;
+    cursor: pointer;
+}
+.ques-warp {
+    position: relative;
+    z-index: 7;
+
+    height: 331px;
+    width: 914px;
+    margin: 0 auto;
+    border: 1px solid #fff5c4;
+    border-top: 2px solid #ffdc50;
+    border-radius: 10px;
+
+    background-color: #fff;
+}
+.ques:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.ques-item {
+    float: left;
+    height: 331px;
+    width: 914px;
+}
+.ques-header {
+    padding-left: 20px;
+    padding-right: 37px;
+    border-bottom: 1px solid #fff5c4;
+
+    font-size: 16px;
+    line-height: 45px;
+}
+.ques-header p {
+    color: #feab0e;
+}
+.ques-title {
+    float: left;
+}
+.ques-time {
+    float: right;
+
+    color: #f1d1ad;
+}
+.ques-author {
+    margin-left: 653px;
+}
+.ques-content {
+    position: relative;
+
+    padding-left: 26px;
+    padding-right: 25px;
+    border-bottom: 1px dashed #f1f0ec;
+
+    font-size: 14px;
+    line-height: 40px;
+
+    color: #c99c68;
+}
+.content-people {
+    padding-left: 43px;
+    padding-right: 43px;
+    margin-top: 35px;
+}
+.people-item {
+    float: left;
+
+    height: 221px;
+    width: 160px;
+    border: 1px solid #fff8d3;
+
+    background-color: #fff;
+}
+.people-fir {
+    margin-right: 26px;
+}
+.people-avatar {
+    height: 160px;
+    width: 100%;
+}
