@@ -48,7 +48,7 @@ a {
     float: left;
     
     height: 50px;
-    width: 173px;
+    width: 208px;
     margin-top: 14px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -64,6 +64,26 @@ a {
     background-repeat: repeat;
     cursor: pointer;
 }
+.content-nav-item:nth-child(2) {
+    margin-left: 22px;
+    margin-right: 22px;
+}
+.content-nav-item:nth-child(3) {
+    margin-right: 22px;
+}
+.content-nav-active {
+    height: 60px;
+    width: 216px;
+    margin-top: 3px;
+    margin-left: 0px;
+    margin-right: 2px;
+
+    line-height: 57px;
+
+    background-image: url(../img/gonglue/zbnav.png);
+    background-size: 100% 115px;
+    background-repeat: no-repeat;
+}
 .ques-warp {
     position: relative;
     z-index: 7;
@@ -76,6 +96,14 @@ a {
     border-radius: 10px;
 
     background-color: #fff;
+    overflow: hidden;
+}
+.ques {
+    position: absolute;
+
+    width: 3656px;
+
+    transition: left 1.5s;
 }
 .ques:after {
     content: "";
