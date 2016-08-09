@@ -1,13 +1,24 @@
+// 绑定事件
 function addEvent (ele, event, hanlder) {
     if (ele.addEventListener) {
         ele.addEventListener(event, hanlder);
     } else if (ele.attachEvent) {
-        ele.attachEvent("on"+event, hanlder);
+        ele.attachEvent("on" + event, hanlder);
     } else {
         ele["on" + event] = hanlder;
     }
 }
 
+function removeEvent (ele, event, hanlder) {
+    if (ele.removeEventListener) {
+        ele.removeEventListener(event, hanlder);
+    } else if (ele.detachEvent) {
+        ele.detachEvent('on' + event, hanlder);
+    } else {
+        ele["on" + event] = null;
+    }
+} 
+// 导航
 function navCheckout (ele, item, itemCN, activeCN, event) {
     addEvent(ele, event, function (e) {
         if (e.target && e.target.tagName.toUpperCase() === 'LI') {
@@ -18,30 +29,40 @@ function navCheckout (ele, item, itemCN, activeCN, event) {
         }
     })
 }
-
+// 循环恢复类名
 function clearClassName (ele, classN) {
     for (var i = 0; i < ele.length; i ++) {
         ele[i].className = classN;
     }
 }
-
-function Carousel (container, imgBox, leftBtn, rightBtn, offsets, time) {
-        var index = 0,
+// 轮播图
+function Carousel (container, imgBox, leftBtn, rightBtn, picNum, offsets, time) {
+        var index = 1,
             timer = 0;
     function switchPics (offset) {
         var newPos = parseInt(imgBox.style.left) + offset;
         imgBox.style.left = newPos + 'px';
-        if (newPos < -offsets * 2) {
+        if (newPos < -offsets * (picNum - 1)) {
             imgBox.style.left = '0px';
         }
         if (newPos > 0) {
-            imgBox.style.left = '0px';
+            imgBox.style.left = (picNum - 1) * -offsets + 'px';
         }
     }
     
     function playCarousel () {
         function click () {
             index += 1;
+            if (index > picNum) {
+                index = 1;
+            }
+            if (index < 1) {
+                index = picNum;
+            }
+            var imgSrc = imgBox.children[index - 1].alt;
+            if (imgSrc) {
+                imgBox.children[index - 1].src = imgSrc;
+            }
             switchPics(-offsets);
         }
         timer = setInterval(click, time);
@@ -64,10 +85,34 @@ function Carousel (container, imgBox, leftBtn, rightBtn, offsets, time) {
     })
     leftBtn.addEventListener('click', function () {
         index -= 1;
+        if (index > picNum) {
+            index = 1;
+        }
+        if (index < 1) {
+            index = picNum;
+        }
+        // console.log(index);
+        var imgSrc = imgBox.children[index - 1].alt;
+        if (imgSrc) {
+            imgBox.children[index - 1].src = imgSrc;
+        }
+        // console.log(imgBox.children[index - 1].src);
         switchPics(offsets);
     })
     rightBtn.addEventListener('click', function () {
         index += 1;
+        if (index > picNum) {
+            index = 1;
+        }
+        if (index < 1) {
+            index = picNum;
+        }
+        var imgSrc = imgBox.children[index - 1].alt;
+        if (imgSrc) {
+            imgBox.children[index - 1].src = imgSrc;
+        }
+        // console.log(index);
+        // console.log(imgBox.children[index - 1].src);
         switchPics(-offsets);
     })
     container.addEventListener('mouseover', stopCarousel);
@@ -76,14 +121,16 @@ function Carousel (container, imgBox, leftBtn, rightBtn, offsets, time) {
 // 绑定轮播
 (function () {
     var zbCon    = $('.zb-life-img');
-    var zbImgBox = $('.life-img-box');
+    var rcImgBox = $('.rc-img-box');
+        msImgBox = $('.ms-img-box');
+        mjImgBox = $('.mj-img-box');
     var zbLbtn   = $('.life-lbtn');
     var zbRbtn   = $('.life-rbtn');
 
-    Carousel($('.img-container')[0], $('.img-box')[0], $('.img-left')[0], $('.img-right')[0], 428, 3000);
-    for (var i = 0; i < zbCon.length; i++) {
-        Carousel(zbCon[i], zbImgBox[i], zbLbtn[i], zbRbtn[i], 664, 3000);
-    }
+    Carousel($('.img-container')[0], $('.img-box')[0], $('.img-left')[0], $('.img-right')[0], 4, 428, 2000);
+    Carousel(zbCon[0], rcImgBox[0], zbLbtn[0], zbRbtn[0], 19, 664, 2300);
+    Carousel(zbCon[1], msImgBox[0], zbLbtn[1], zbRbtn[1], 63, 664, 2300);
+    Carousel(zbCon[2], mjImgBox[0], zbLbtn[2], zbRbtn[2], 8, 664, 2300);
 })()
 
 function checkout () {
@@ -131,22 +178,52 @@ function checkout () {
         glContain[1].style.right = '0px';
     })
     //sidebar
-    console.log(sidebarItem);
     navCheckout(sidebar[0], sidebarItem, 'side-bar-item', 'side-bar-active', 'click');
 }
 checkout();
 
-
-
-// function scrollbar () {
-//     var barCon = $('.scrollbar');
-//     var bar = $('.scrollbar-btn');
-//     for (var i = 0; i < bar.length; i++) {
-//         addEvent(bar[i], 'click', (function (n) {
-//             addEvent(bar[i], 'mousemove', function () {
-//                 console.log(barCon[i].layerY);
-//             })
-//         })(i))
-//     }
+// function sidebar (ele, pos, scrollContainer, time) {
+//     addEvent(ele, 'click', function () {
+//         function  changePos () {
+//             var y = scrollContainer.scrollTop,
+//                 dis = pos - y,
+//                 speed = dis / 8;
+//             scrollContainer.scrollTop += speed;
+//             // console.log(dis);
+//             if (Math.abs(dis) < 10) {
+//                 clearInterval(time);
+//             }
+//         }
+//         time = setInterval(changePos, 20);
+//     })
 // }
-// scrollbar();
+function sidebar (ele, pos, scrollContainer) {
+    addEvent(ele, 'click', function () {
+        scrollContainer.scrollTop = pos;
+    })
+}
+(function () {
+    var scroll = $('.side-need-kown')[0];
+    var sidebarItem = $('.side-bar-item');
+    sidebar(sidebarItem[0], 0, scroll);
+    sidebar(sidebarItem[1], 638, scroll);
+    sidebar(sidebarItem[2], 5932, scroll);
+    sidebar(sidebarItem[3], 7750, scroll);
+
+    addEvent(scroll, 'scroll', function () {
+        var pos = scroll.scrollTop;
+        if (pos <= 484) {
+            clearClassName(sidebarItem, 'side-bar-item');
+            addClass(sidebarItem[0], 'side-bar-active');
+        } else if (pos < 5800 && pos > 484) {
+            clearClassName(sidebarItem, 'side-bar-item');
+            addClass(sidebarItem[1], 'side-bar-active');
+        } else if (pos >= 5800 && pos < 7527) {
+            clearClassName(sidebarItem, 'side-bar-item');
+            addClass(sidebarItem[2], 'side-bar-active');
+        } else {
+            clearClassName(sidebarItem, 'side-bar-item');
+            addClass(sidebarItem[3], 'side-bar-active');
+        }
+    })
+})()
