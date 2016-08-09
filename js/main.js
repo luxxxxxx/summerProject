@@ -338,27 +338,10 @@ console.log('// ---------------------部分bug还在抢修中-------------------
 
 
 
-// returnTop.onclick = function () {
-// 	if (document.body.scrollTop != 0) {    
-// 			var body = document.body;
-// 		}else {
-// 			var body = document.documentElement;   //ie8获取距离页面顶端方式不一样
-// 		}
-// 	if ( body.scrollTop != 0) {
-	// 	var distancePiece = body.scrollTop/25;
-	// 	var timer = setInterval(function () {
-	// 	if ( body.scrollTop <= distancePiece ) {
-	// 		body.scrollTop = 0;
-	// 		clearInterval(timer);
-	// 	}else {
-	// 		body.scrollTop -= distancePiece;
-	// 	}
-	// },20)
-// 	}
-// }
-	var goTopBtn = $('#goTop');
-	var leftPlane = $('#leftBox');    //给飞机定位 
-	var rightPlane = $('#rightBox');
+
+	var goTopBtn = $('#goTop');   //回到顶部按钮
+	var leftPlane = $('#leftBox');    //给飞机定位 左边的 飞机
+	var rightPlane = $('#rightBox'); //右边的飞机
 	var oWindow = window;
 	function winWidth () {                                   //这个函数能够返回  window 的 宽度   兼容IE8
 		if (oWindow.innerWidth)
@@ -376,7 +359,6 @@ console.log('// ---------------------部分bug还在抢修中-------------------
 		leftPlane.style.display = 'none';
 		rightPlane.style.display = 'none';
 		goTopBtn.style.display = 'none';
-
 	}
 		leftPlane.style.display = 'block'
 		rightPlane.style.display = 'block'
@@ -404,21 +386,40 @@ console.log('// ---------------------部分bug还在抢修中-------------------
 	}
 
 
-
-
-
-// window.onscroll = function () {
+goTopBtn.onclick = function () {
+	if (document.body.scrollTop != 0) {    
+			var body = document.body;
+		}else {
+			var body = document.documentElement;   //ie8获取距离页面顶端方式不一样
+		}
+	if ( body.scrollTop != 0) {
+		var distancePiece = body.scrollTop/25;
+		var timer = setInterval(function () {
+		if ( body.scrollTop <= distancePiece ) {
+			body.scrollTop = 0;
+			clearInterval(timer);
+		}else {
+			body.scrollTop -= distancePiece;
+		}
+	},20)
+	}
+}
+// goTopBtn.onclick = function () {
 // 	var top = document.body.scrollTop || document.documentElement.scrollTop;
 // 	console.log(top);
-// 	var a = true;
-// 	if (top > 1000) {
-// 		if (a) {
-// 			a = false;
-// 			move(returnTop,{opacity:1,bottom:})
+// 	if ( top != 0) {
+// 		var distancePiece = body.scrollTop/25;
+// 		var timer = setInterval(function () {
+// 		if ( top <= distancePiece ) {
+// 			body.scrollTop = 0;
+// 			clearInterval(timer);
+// 		}else {
+// 			body.scrollTop -= distancePiece;
 // 		}
+// 	},20)
 // 	}
 // }
-var returnTop = $('#goTop'); 
+
 var onOff = true;
 window.onscroll = function () {
 	var top = document.body.scrollTop || document.documentElement.scrollTop;
@@ -436,15 +437,15 @@ window.onscroll = function () {
 
 
 function slideIn () {
-	returnTop.style.opacity = 0;
+	goTopBtn.style.opacity = 0;
 	onOff = true;
 	setTimeout(function () {
-		returnTop.style.display = 'none';
+		goTopBtn.style.display = 'none';
 	},750)
 }
 function slideOut () {
-	returnTop.style.display = 'block'
-	returnTop.style.opacity = 1;
+	goTopBtn.style.display = 'block'
+	goTopBtn.style.opacity = 1;
 	onOff = false;
 }
 

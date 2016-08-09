@@ -485,6 +485,9 @@ body {
 	width: 1020px;
 	height: 550px;
 	margin: 0 auto;
+	-webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .flag {
 	position: absolute;
@@ -511,6 +514,9 @@ body {
     height: 499px;
     overflow: hidden;
     background-color: #4dccc5;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .map-con .img {
 	position: relative;
@@ -518,14 +524,23 @@ body {
 	top: 0px;
 	width: 980px;
 	height: 499px;
+	-webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .map-con .img img {
 	width: 100%;
 	height: 100%;
+	-webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .map-con.con2 {
 	z-index: 15;
 	background-color: transparent;
+	-webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .map-con.con2 #mapScreen {
 	position: relative;
@@ -533,11 +548,17 @@ body {
 	height: 100%;
 	cursor: default;
 	overflow: hidden;
+	-webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .map-con.con2 #mapScreen #positionArrowCon {
 	position: relative;
 	left: 0px;
 	top: 0px;
+	-webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .map-con.con2 #mapScreen .positionArrow {
 	position: absolute;
@@ -545,6 +566,9 @@ body {
 	height: 58px;
 	background: url('../img/positionArrow.png') no-repeat center center;
 	cursor: pointer;
+	-webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .map-con.con2 #mapScreen #oldGate {
 	left: 344px;
@@ -629,6 +653,9 @@ body {
 	line-height: 40px;
 	font-size: 16px;
 	color: #000;
+	-webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 #main #map-wrp #map-con .map-con.con2 #mapScreen .signBox {
 	position: absolute;

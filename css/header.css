@@ -39,7 +39,7 @@ body {
 	height: 60px;
 }
 #header .main .h_m_right ul .navLi.know {
-	width: 100px;
+	width: 110px;
 	height: 60px;
 }
 #header .main .h_m_right ul .navLi.data {
@@ -136,6 +136,6 @@ body {
 	height: 3px;
 	border-radius: 1px;
 	background-color: #82cb83;
-	transition: 1.0s left cubic-bezier(0, 1.33, 0.61, 1.04);
+	transition: 0.5s left cubic-bezier(0, 0, 0.23, 1.31);
 	transition-delay: .05s;
 }
