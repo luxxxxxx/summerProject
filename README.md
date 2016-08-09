@@ -3,7 +3,7 @@
     *  前端技术总监
     *  教授
     *  美工
-    *  非常の强势 ![img](http://forbiddensea.com.img.800cdn.com/images/laugh.png)
+    *  非常の强势 ![^ ^.](http://forbiddensea.com.img.800cdn.com/images/laugh.png)
 * 刘荣博
     * 分页：邮子攻略
     * 分页：学长帮帮忙
