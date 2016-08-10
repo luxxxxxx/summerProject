@@ -11,7 +11,7 @@ a {
     position: relative;
     
     height: 890px;
-    width: 1002px;
+    width: 960px;
     padding: 0px 21px 0px 21px;
     margin: -71px auto 0px;
     border-radius: 5px;
@@ -30,7 +30,7 @@ a {
     position: relative;
     z-index: 6;
     height: 798px;
-    width: 1002px;
+    width: 100%;
     padding-top: 44px;
     overflow: hidden;
     background-color: #fffadd;
