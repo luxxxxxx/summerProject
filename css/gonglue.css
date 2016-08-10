@@ -152,7 +152,12 @@ th {
     width: 961px;
     border-radius: 10px;
 }
-.img-cover {
+.dom-img-cover {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+.zb-img-cover {
     position: absolute;
     left: 0px;
     bottom: 0px;
