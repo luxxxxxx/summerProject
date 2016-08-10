@@ -182,34 +182,35 @@ function checkout () {
 }
 checkout();
 
-// function sidebar (ele, pos, scrollContainer, time) {
-//     addEvent(ele, 'click', function () {
-//         function  changePos () {
-//             var y = scrollContainer.scrollTop,
-//                 dis = pos - y,
-//                 speed = dis / 8;
-//             scrollContainer.scrollTop += speed;
-//             // console.log(dis);
-//             if (Math.abs(dis) < 10) {
-//                 clearInterval(time);
-//             }
-//         }
-//         time = setInterval(changePos, 20);
-//     })
-// }
-function sidebar (ele, pos, scrollContainer) {
-    addEvent(ele, 'click', function () {
-        scrollContainer.scrollTop = pos;
-    })
-}
 (function () {
     var scroll = $('.side-need-kown')[0];
     var sidebarItem = $('.side-bar-item');
+    var flag = 0;
     sidebar(sidebarItem[0], 0, scroll);
     sidebar(sidebarItem[1], 638, scroll);
     sidebar(sidebarItem[2], 5932, scroll);
     sidebar(sidebarItem[3], 7750, scroll);
 
+    // 声明flag变量来控制滚动条还没结束时再次点击触发滚动条发生的冲突bug
+    function sidebar (ele, pos, scrollContainer, time) {
+        addEvent(ele, 'click', function () {
+            if (flag === 0) {
+                flag = 1;
+                function  changePos () {
+                    var y = scrollContainer.scrollTop,
+                        dis = pos - y,
+                        speed = dis / 7;
+                    scrollContainer.scrollTop += speed;
+                    if (Math.abs(dis) < 10) {
+                        clearInterval(time);
+                        flag = 0;
+                    }
+                }
+                time = setInterval(changePos, 20);
+            }
+        })
+    }
+    // 滚动条滚动对应sidebar按钮样式改变
     addEvent(scroll, 'scroll', function () {
         var pos = scroll.scrollTop;
         if (pos <= 484) {
