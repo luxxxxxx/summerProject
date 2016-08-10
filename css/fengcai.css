@@ -43,6 +43,7 @@
 	text-align:  center;
 	background: url('../img/fengcai/btn-bg.png') center;
 	background-repeat: repeat;
+	cursor: pointer;
 }
 #fengcai-con .btn-con .btn.select {
 	background: url('../img/fengcai/btn-select-bg.png') center;
@@ -75,13 +76,16 @@
 }
 .slideDownCon {
 	position: absolute;
+	top: 770px;
 	width: 100%;
 	height: 751px;
 	margin-top: 15px;
+	transition: .5s top linear;
+}
+.slideDownCon.current {
+	top: 0;
 }
 #student-content {
-	
-	top: 0px;
 	float: left;
 	
 }
@@ -251,4 +255,72 @@
 	display: block;
 	width: 100%;
 	height: 100%;
+}
+.same-con .innerCon {
+	position: relative;
+	margin: 15px auto 0;
+	width: 825px;
+	height: 710px;
+}
+.same-con .innerCon .same-arrow {
+	position: absolute;
+	top: 328px;
+	width: 29px;
+	height: 51px;
+	cursor: pointer;
+}
+.same-con .innerCon .same-arrow.left {
+	left: -48px;
+	background: url('../img/fengcai/pptleft.png') no-repeat center center;
+}
+.same-con .innerCon .same-arrow.right {
+	right: -48px;
+	background: url('../img/fengcai/pptright.png') no-repeat center center;
+}
+.same-con .innerCon .video-con {
+	float: left;
+	padding: 5px;
+	background-color: #fff;
+	border-radius: 3px;
+	width: 250px;
+	height: 207px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.same-con .innerCon .video-con.no-right {
+	margin-right: 0;
+}
+.same-con .innerCon .video-con.no-bottom {
+	margin-bottom: 0;
+}
+.same-con .innerCon .video-con img {
+	width: 250px;
+	height: 159px;
+}
+.same-con .innerCon .video-con h2 {
+	height: 48px;
+	margin-top: -6px;
+	font-size: 16px;
+	color: #ff9853;
+	text-align: center;
+	line-height: 48px;
+}
+.same-con .innerCon .overflow-con {
+	overflow: hidden;
+}
+.same-con .innerCon .slide-con .con {
+	float: left;
+	width: 50%;
+}
+#video-con .innerCon .slide-con {
+	left: 0;
+	width: 200%;
+}
+#xuezi-con .innerCon .slide-con {
+	left: 0;
+	width: 200%;
+}
+#teacher-con .innerCon .slide-con {
+	left: 0;
+	width: 200%;
 }

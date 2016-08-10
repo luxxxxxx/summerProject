@@ -1,0 +1,11 @@
+.xl-content {
+    position: relative;
+    height: 890px;
+    width: 1002px;
+    padding: 0px 21px 0px 21px;
+    margin: -71px auto 0px;
+    border-radius: 5px;
+    
+    background-color: #fffadd;
+    box-shadow: -1px -2px 2px #f2e19e inset;
+}

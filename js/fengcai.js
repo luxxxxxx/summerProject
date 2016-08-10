@@ -9,7 +9,6 @@
 	}
 	innerSlideCon.onscroll = function () {
 		var top = this.scrollTop;
-		console.log(top);
 		if (top < aTop[1]) {
 			if (!hasClass(aLSlt[0],'select')) {
 				toggleClass(0);
@@ -80,7 +79,6 @@
 	var contentW = $('#organization').offsetWidth;
 	var slideCon = $('.slide-con')[1];
 	var zswSltArr = $('.z-s-w-slt');   //校级组织 学生社团 红岩网校 按钮
-	
 	var aLSltL = aLSlt.length;
 	for (var i = 0; i < zswSltArr.length; i++) {
 		zswSltArr[i].index = i;
@@ -106,14 +104,74 @@
 			};
 		addClass(aLSlt[index],'select');
 	}
+
+	var aVideoArrow = $('.video-arrow');
+	var aTeacherArrow = $('.teacher-arrow');
+	var aXueziArrow = $('.xuezi-arrow');
+	var aSlideDownCon = $('.slideDownCon');
+	console.log(aSlideDownCon.length);
+	var videoSlideCon = $('#videoSlideCon');
+	var teacherSlideCon = $('#teacherSlideCon');
+	var videoSlideCon = $('#videoSlideCon');
+	var xueziSlideCon = $('#xueziSlideCon');
 	var aBtn = $('.btn');
 	for (var i = 0; i < aBtn.length; i++) {
+		aBtn[i].index = i;             
 		aBtn[i].onclick = function () {
 			for (var i = 0; i < aBtn.length; i++) {
 				removeClass(aBtn[i],'select');
+				removeClass(aSlideDownCon[i],'current');
 			};
 			addClass(this,'select');
-
+			addClass(aSlideDownCon[this.index],'current');
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	for ( var i = aVideoArrow.length - 1; i >= 0; i-- ) {
+		aVideoArrow[i].index = i;
+		aVideoArrow[i].onclick = function () {
+			if (this.index === 0) {
+				move(videoSlideCon,{left:'0px'},350,'easeOut')
+			}else if (this.index === 1) {
+				move(videoSlideCon,{left:'-825px'},350,'easeOut')
+			}
+		}
+	}
+	for ( var i = aTeacherArrow.length - 1; i >= 0; i-- ) {
+		aTeacherArrow[i].index = i;
+		aTeacherArrow[i].onclick = function () {
+			if (this.index === 0) {
+				move(teacherSlideCon,{left:'0px'},350,'easeOut')
+			}else if (this.index === 1) {
+				move(teacherSlideCon,{left:'-825px'},350,'easeOut')
+			}
+		}
+	}
+	for ( var i = aXueziArrow.length - 1; i >= 0; i-- ) {
+		aXueziArrow[i].index = i;
+		aXueziArrow[i].onclick = function () {
+			if (this.index === 0) {
+				move(xueziSlideCon,{left:'0px'},350,'easeOut')
+			}else if (this.index === 1) {
+				move(xueziSlideCon,{left:'-825px'},350,'easeOut')
+			}
+		}
+	}
+
+
+
 })()

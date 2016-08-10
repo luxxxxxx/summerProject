@@ -139,7 +139,6 @@ closeBtn.onclick = function () {
 			var y_ = ev.clientY - startY;
 			var mapLeft = map.offsetLeft;
 			var mapTop = map.offsetTop;
-			console.log(map.offsetLeft + '&' + maxDistance + '&' + x_);
 			if (mapLeft >= 0 && x_ > 0) {
 				map.style.left =  '0px';
 			}else if (mapLeft <= minLeft && x_<0 ) {
@@ -291,7 +290,6 @@ mapScreen.onmousedown = function (e) {
 		var y_ = ev.clientY - startY;
 		var mapLeft = map.offsetLeft;
 		var mapTop = map.offsetTop;
-		console.log(map.offsetLeft + '&' + maxDistance + '&' + x_);
 		if (mapLeft >= 0 && x_ > 0) {
 			map.style.left =  '0px';
 		}else if (mapLeft <= minLeft && x_<0 ) {
@@ -331,7 +329,7 @@ function targetArrow() {    //获取 目标箭头
 	}
 	return target;
 }
-console.log('// ---------------------部分bug还在抢修中----------------------敬请期待')
+
 
 
 
@@ -404,50 +402,73 @@ goTopBtn.onclick = function () {
 	},20)
 	}
 }
-// goTopBtn.onclick = function () {
-// 	var top = document.body.scrollTop || document.documentElement.scrollTop;
-// 	console.log(top);
-// 	if ( top != 0) {
-// 		var distancePiece = body.scrollTop/25;
-// 		var timer = setInterval(function () {
-// 		if ( top <= distancePiece ) {
-// 			body.scrollTop = 0;
-// 			clearInterval(timer);
-// 		}else {
-// 			body.scrollTop -= distancePiece;
-// 		}
-// 	},20)
-// 	}
-// }
 
 var onOff = true;
 window.onscroll = function () {
 	var top = document.body.scrollTop || document.documentElement.scrollTop;
-	console.log(top);
 	if (top > 1000) {
 		if (onOff) {
-			slideOut();
+			onOff = false;
+			goTopBtn.style.display = 'block';
+			setTimeout(function(){
+				goTopBtn.style.opacity = 1;
+			},10)
+			
 		}
 	}else if (top < 1000) {
 		if (!onOff) {
-			slideIn();
+			onOff = true;
+			goTopBtn.style.opacity = 0;
+			setTimeout(function(){
+			goTopBtn.style.display = 'none';
+			},600);
 		}
-	}	
+	}
 }
 
 
-function slideIn () {
-	goTopBtn.style.opacity = 0;
-	onOff = true;
-	setTimeout(function () {
-		goTopBtn.style.display = 'none';
-	},750)
-}
-function slideOut () {
-	goTopBtn.style.display = 'block'
-	goTopBtn.style.opacity = 1;
-	onOff = false;
-}
+// function slideIn () {
+// 	var startTop = goTopBtn.offsetTop;
+// 	var pieceTop = 100/25;
+// 	var pieceOpacity = 1/25;
+// 	var targetTop = startTop - 100;
+// 	var startOpacity = parseFloat(goTopBtn.style.opacity);
+// 	var goTopTimer = setInterval(function(){
+// 		startTop += pieceTop;
+// 		startOpacity -= pieceOpacity;
+// 		if (startOpacity <= 0) {
+// 			startOpacity = 0;
+// 		}
+// 		goTopBtn.style.top = startTop + 'px';
+// 		goTopBtn.style.opacity = startOpacity;
+// 		if (targetTop <= startTop) {
+// 			clearInterval(goTopTimer);
+// 			goTopBtn.style.display = 'block';
+// 		}
+// 	},13)
+// }
+// function slideOut () {
+// 	goTopBtn.style.display = 'block';
+// 	var startTop = goTopBtn.offsetTop;
+// 	console.log(startTop);
+// 	var startOpacity = parseFloat(goTopBtn.style.opacity) ;
+// 	var pieceTop = 70/25;
+// 	var pieceOpacity = 1/10;
+// 	var targetTop = startTop - 70;
+// 	var goTopTimer = setInterval (function(){
+// 		startTop -= pieceTop;
+// 		startOpacity += pieceOpacity;
+// 		if (startOpacity >= 1) {
+// 			startOpacity = 1;
+// 		}
+// 		console.log(typeof startOpacity)
+// 		goTopBtn.style.top = startTop + 'px';
+// 		goTopBtn.style.opacity = startOpacity;
+// 		if (targetTop >= startTop) {
+// 			clearInterval(goTopTimer);
+// 		}
+// 	},13)
+// }
 
 // var main = $('#main');
 // var leafTimer = setInterval (function () {

@@ -983,7 +983,9 @@ body {
 	background: url('../img/returnTop.png') no-repeat center center;
 	cursor: pointer;
 	transition: .75s opacity linear;
-	opacity: 1;
+	display: none;
+	opacity: 0;
+	transition: 600 all linear;
 }
 
 
