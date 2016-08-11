@@ -18,11 +18,13 @@ function navCheckout (ele, item, itemCN, activeCN, event) {
         }
     })
 }
+
 function clearClassName (ele, classN) {
     for (var i = 0; i < ele.length; i ++) {
         ele[i].className = classN;
     }
 }
+
 (function (){
     var contentNavItem = $('.content-nav-item');
     var quesContent = $('.ques');
@@ -35,3 +37,43 @@ function clearClassName (ele, classN) {
         })(i))
     }
 })()
+
+// 回到顶部
+function backToTop () {
+    var viewHeight = document.documentElement.clientHeight;
+    var btn = $('.to-top-btn')[0],
+        body = document.querySelector('body');
+    function hanlder () {
+        function decrease () {
+            var pHeight = document.documentElement.scrollTop || document.body.scrollTop;
+            var speed = pHeight / 9;
+            document.documentElement.scrollTop -= speed;
+            body.scrollTop -= speed;
+            if (pHeight === 0) {
+                clearInterval(timer);
+            }
+        }
+        var timer = setInterval(decrease, 20);
+        addEvent(window, 'mousewheel', function () {
+            clearInterval(timer);
+        })
+        addEvent(window, 'DOMMouseScroll', function () {
+            clearInterval(timer);
+        })
+    }
+    // 按钮显示隐藏
+    var flag = 0;
+    function disp () {
+        var pHeight = document.documentElement.scrollTop || document.body.scrollTop;
+        if (pHeight > 500) {
+            btn.style.opacity = '1';
+        }
+        if (pHeight <= 500) {
+            btn.style.opacity = '0';
+        }
+    }
+    addEvent(btn, 'click', hanlder);
+    body.onscroll = disp;
+}
+
+backToTop();
