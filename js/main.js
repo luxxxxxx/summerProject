@@ -191,6 +191,7 @@ descNextA.onclick = function () {         // 向右箭头
 	}
 	addClass(positionDescArry[lunboCon.index],'currentArrow');
 	descfix(targetArrow().offsetLeft,targetArrow().offsetTop);
+	positionDesc.innerHTML = targetArrow().getAttribute('name');
 }
 descPrevA.onclick = function () {      // 向左箭头
 	var x_ = 0;
@@ -210,6 +211,7 @@ descPrevA.onclick = function () {      // 向左箭头
 	}
 	addClass(positionDescArry[lunboCon.index],'currentArrow');
 	descfix(targetArrow().offsetLeft,targetArrow().offsetTop);
+	positionDesc.innerHTML = targetArrow().getAttribute('name');
 }
 
 

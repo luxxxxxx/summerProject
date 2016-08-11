@@ -310,6 +310,7 @@ body {
 	transform: rotate(0deg);
 }
 }
+
 #main #banner-wrp .banner .isLand-con #gotocqupt {
 	z-index: 5;
 	position: absolute;
@@ -817,11 +818,44 @@ body {
 	margin: 0 auto;
 	background:url('../img/content.png') no-repeat center center;
 }
+
 #main #content .section {
+	position: relative;
 	float: left;
 	width: 320px;
 	height: 460px;
 	padding-top: 117px;
+}
+#main #content .section:hover .icon {
+	-webkit-animation-name: iconRotate;
+	animation-name: iconRotate;
+
+}
+@keyframes iconRotate {
+	0% {transform: rotate(0deg)}
+	30%{transform: rotate(30deg)}
+	60%{transform: rotate(-15deg)}
+	80%{transform: rotate(10deg)}
+	100%{transform: rotate(0deg)}
+}
+#main #content .section .icon {
+	position: absolute;
+	left: 80px;
+	top: 142px;
+	width: 160px;
+	height: 160px;
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+}
+#main #content .section .icon1 {
+	background: url('../img/iconGuidence.png') no-repeat center center;
+}
+#main #content .section .icon2 {
+	background: url('../img/iconLoudSpeaker.png') no-repeat center center;
+}
+#main #content .section .icon3 {
+	background: url('../img/iconCamera.png') no-repeat center center;
 }
 #main #content .section.c_section1 {
 	margin-left: 19px;
