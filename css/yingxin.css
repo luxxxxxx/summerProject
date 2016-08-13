@@ -45,6 +45,7 @@ a {
 }
 .content-btn {
     width: 385px;
+    // display: inline-block;
     height: 55px;
     margin: 40px auto 40px;
     border-radius: 100px;
