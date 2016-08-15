@@ -10,11 +10,11 @@ var s2 = $('#s2');
 var positionArr = ['5px','-30px','-66px','-102px','-137px','-173','-209','-244','-280','-316'];
 
 var timer = setInterval(function(){
-	var targetTime = new Date(2016,9,1,0,0);
+	var targetTime = new Date(2016,8,7,0,0);
 	var time = targetTime - new Date();
 	var s = parseInt(time/1000 %60);
 	var m = parseInt(time/1000/60 %60);
-	var h = parseInt(time/1000/60/60 %60);
+	var h = parseInt(time/1000/60/60 %24);
 	var d = parseInt(time/1000/60/60/24);
 	move(s2,{'top':positionArr[num(s)[1]]},200,'easeIn',function(){
 	})
@@ -52,26 +52,24 @@ for (var i = 0; i < BtnArray.length; i++) {
 	}
 }
 
-var map = $('#resizeMap');
-var mapScreen = $('#mapScreen');
-var rate = 1;
-var fixRate;
-var plus = $('#plus');
-var minus = $('#minus');
-var positionDesc = $('#positionDesc');
-var originDescL = positionDesc.offsetLeft;
-var originDescT = positionDesc.offsetTop;
-var positionArrowScreen = $('#positionArrowCon');
-var seneryT = $('#seneryTitle');
-var seneryDesc = $('#seneryDesc');
+var map = $('#resizeMap');    //地图外面的 div
+var mapScreen = $('#mapScreen');  //鼠标在地图上面点击滑动时候的屏幕
+var rate = 1;  //地图放大缩小的b比例
+var fixRate; //精确比例到小数点后一位 *避免了 小数相加减带来的误差
+var plus = $('#plus');   //地图放大按钮
+var minus = $('#minus');  //缩小按钮
+var positionDesc = $('#positionDesc');   // 坐标下面的文字介绍
+var originDescL = positionDesc.offsetLeft;  //  最开始坐标距离地图左侧
+var originDescT = positionDesc.offsetTop;   //  最开始坐标距离地图右侧
+var positionArrowScreen = $('#positionArrowCon'); //盛放地图标记 的div
+var seneryT = $('#seneryTitle');  // 地图弹窗 里面地图名字
+var seneryDesc = $('#seneryDesc');  // 地图弹窗里面 地图介绍
 
 
 var positionDescArry = $('.positionArrow');     //所有 箭头
-var originW = parseInt(getStyle(map,'width'));
-var originH = parseInt(getStyle(map,'height'));
+var originW = parseInt(getStyle(map,'width')); //地图Box宽
+var originH = parseInt(getStyle(map,'height'));  //地图box高
 
-// seneryT.innerHTML = positionArrow[0].getAttribute('name');
-// seneryDesc.innerHTML = positionArrow[0].getAttribute('desc');
 var positionDescArryL = positionDescArry.length;   //箭头数量
 for (var i = 0; i < positionDescArryL; i++) {      //初始化 箭头数据  箭头 原本 left，top（方便计算位置）增添鼠标移入事件
 	var This = positionDescArry[i];
@@ -96,7 +94,7 @@ for (var i = 0; i < positionDescArryL; i++) {      //初始化 箭头数据  箭
 		if (lunboCon.index == 0) {
 			descPrevA.style.display = 'none';
 			descnextA.style.display = 'block';
-		} else if ( lunboCon.index == positionDescArryL) {
+		} else if ( lunboCon.index == positionDescArryL - 1) {
 			descNextA.style.display = 'none'
 			descPrevA.style.display = 'block';
 		} else {
@@ -118,7 +116,6 @@ var lunboW = 466;    //每张图片 的 宽度
 var originMapL = map.offsetLeft;
 var originMapT = map.offsetTop;
 var originMapR = parseInt(getStyle(map,'right'));
-var originMapB = map.offsetBottom;
 var closeBtn = $('.close')[0];
 closeBtn.onclick = function () {
 	lunbo.style.display = 'none';
@@ -128,35 +125,32 @@ closeBtn.onclick = function () {
 	var startT = map.offsetTop;    // map 的 top
 	var startX = ev.clientX;
 	var startY = ev.clientY;
-	var maxDistance = 50; 
 	mapScreenW = this.offsetWidth;
 	mapScreenH = this.offsetHeight;
-	var minLeft = -(map.offsetWidth - mapScreenW);
-	var minTop = -(map.offsetHeight - mapScreenH);
+	var minLeft = -(map.offsetWidth - mapScreenW);    //地图往左滑动的最大距离
+	var minTop = -(map.offsetHeight - mapScreenH);	  //地图往右滑动的最大距离
+	var targetL;
+	var targetT;
 		document.onmousemove = function (e) {
 			var ev = e || window.event;
-			var x_ = ev.clientX - startX;
+			var x_ = ev.clientX - startX;   //
 			var y_ = ev.clientY - startY;
-			var mapLeft = map.offsetLeft;
-			var mapTop = map.offsetTop;
-			if (mapLeft >= 0 && x_ > 0) {
-				map.style.left =  '0px';
-			}else if (mapLeft <= minLeft && x_<0 ) {
-				map.style.left = minLeft + 'px';
-			}else {
-				var xMove = startL + x_;
-				positionArrowScreen.style.left = xMove + 'px';
-				map.style.left = xMove + 'px';
-			};
-			if (mapTop >= 0 && y_ > 0 ) {
-				map.style.top = '0px';			
-			}else if (mapTop <= minTop && y_ < 0) {
-				map.style.top = minTop + 'px';	
-			}else {
-				var yMove = startT + y_ 
-				map.style.top = yMove + 'px';
-				positionArrowScreen.style.top = yMove + 'px';	
+			targetL = startL + x_;
+			targetT = startT + y_;
+			if (targetL >= 0 ) {
+				targetL = 0;
+			}else if (targetL <= minLeft ) {
+				targetL = minLeft
 			}
+			if (targetT >= 0) {
+				targetT = 0
+			}else if (targetT <= minTop) {
+				targetT = minTop;
+			}
+			map.style.top = targetT + 'px';
+			positionArrowScreen.style.top = targetT + 'px';
+			map.style.left = targetL + 'px';
+			positionArrowScreen.style.left = targetL + 'px';
 		};
 		document.onmouseup = function () {
 			this.onmousemove = null;
@@ -228,13 +222,13 @@ plus.onclick = function () {
 	}
 	if ( fixRate == 1.3 ) {
 		fixL = 6;
-		fixR =12;
+		fixR =20;
 	} else if ( fixRate == 1.6 ) {
 		fixL = 15;
-		fixR = 20;
+		fixR = 35;
 	} else if ( fixRate == 1.9 ) {
 		fixL = 20;
-		fixR = 30;
+		fixR = 50;
 	}
 
 	move( map,{ width: originW * rate + 'px', height: originH * rate + 'px' }, 200 , 'easeOut' );
@@ -249,25 +243,40 @@ plus.onclick = function () {
 minus.onclick = function () {
 	var fixL = 0;
 	var fixR = 0; 
+	var fixRate;
 	if  ( rate >= 1 && rate != 1 ) {
 		rate -= 0.3;
 		fixRate = rate.toFixed(1);
-	}
+	};
 	if ( fixRate == 1.3 ) {
-		fixL = 6;
-		fixR =12;
-	} else if ( fixRate == 1.6 ) {
 		fixL = 15;
-		fixR = 20;
+		fixR = 35;
+	} else if ( fixRate == 1.6 ) {
+		fixL = 20;
+		fixR = 50;
 	} else if ( fixRate == 1.9 ) {
 		fixL = 20;
-		fixR = 30;
+		fixR = 50;
 	}
+
 	move(map,{ width: originW * rate + fixL + 'px', height: originH * rate + fixR + 'px' }, 200 , 'easeOut');
+
+
+	var minLeft = -( originW * rate + fixL - originW);
+	var minTop = -( originH * rate + fixR - originH);
+	if (map.offsetLeft <= minLeft) {
+		map.style.left = minLeft + 'px';
+		positionArrowScreen.style.left = minLeft + 'px';
+	}; //修正地图缩小后 地图未能铺满屏幕的bug；
+	if (map.offsetTop <= minTop) { 
+		map.style.top = minTop + 'px';
+		positionArrowScreen.style.top = minTop + 'px';
+	}
+
 
 	for ( var i = 0; i < positionDescArry.length; i++ ) {
 		var This = positionDescArry[i];
-		move(This,{left:This.originLeft * rate + fixL +'px',top:This.oringinTop*rate + fixR + 'px'},200 , 'easeOut');
+		move(This,{left:This.originLeft * rate + fixL +'px',top:This.oringinTop*rate + fixR + 'px'}, 200 , 'easeOut');
 	}
 	var l = targetArrow().originLeft*rate;
 	var t = targetArrow().oringinTop*rate;
@@ -281,40 +290,38 @@ mapScreen.onmousedown = function (e) {
 	var startT = map.offsetTop;    // map 的 top
 	var startX = ev.clientX;
 	var startY = ev.clientY;
-	var maxDistance = 50; 
 	mapScreenW = this.offsetWidth;
 	mapScreenH = this.offsetHeight;
-	var minLeft = -(map.offsetWidth - mapScreenW);
-	var minTop = -(map.offsetHeight - mapScreenH);
-	document.onmousemove = function (e) {
-		var ev = e || window.event;
-		var x_ = ev.clientX - startX;
-		var y_ = ev.clientY - startY;
-		var mapLeft = map.offsetLeft;
-		var mapTop = map.offsetTop;
-		if (mapLeft >= 0 && x_ > 0) {
-			map.style.left =  '0px';
-		}else if (mapLeft <= minLeft && x_<0 ) {
-			map.style.left = minLeft + 'px';
-		}else {
-			var xMove = startL + x_;
-			positionArrowScreen.style.left = xMove + 'px';
-			map.style.left = xMove + 'px';
+	var minLeft = -(map.offsetWidth - mapScreenW);    //地图往左滑动的最大距离
+	var minTop = -(map.offsetHeight - mapScreenH);	  //地图往右滑动的最大距离
+	var targetL;
+	var targetT;
+		document.onmousemove = function (e) {
+			var ev = e || window.event;
+			var x_ = ev.clientX - startX;   
+			var y_ = ev.clientY - startY;
+			targetL = startL + x_;
+			targetT = startT + y_;
+			if (targetL >= 0 ) {
+				targetL = 0;
+			}else if (targetL <= minLeft ) {
+				targetL = minLeft
+			}
+			if (targetT >= 0) {
+				targetT = 0
+			}else if (targetT <= minTop) {
+				targetT = minTop;
+			}
+			map.style.top = targetT + 'px';
+			positionArrowScreen.style.top = targetT + 'px';
+			map.style.left = targetL + 'px';
+			positionArrowScreen.style.left = targetL + 'px';
 		};
-		if (mapTop >= 0 && y_ > 0 ) {
-			map.style.top = '0px';			
-		}else if (mapTop <= minTop && y_ < 0) {
-			map.style.top = minTop + 'px';	
-		}else {
-			var yMove = startT + y_ 
-			map.style.top = yMove + 'px';
-			positionArrowScreen.style.top = yMove + 'px';	
-		}
-	};
-	document.onmouseup = function () {
-		this.onmousemove = null;
-	}
+		document.onmouseup = function () {
+			this.onmousemove = null;
+		};
 }
+
 
 
 function descfix (l,t) {    //移动说明文字   l: 目标箭头left t：目标箭头top
@@ -332,16 +339,11 @@ function targetArrow() {    //获取 目标箭头
 	return target;
 }
 
-
-
-
-
-
-
-
 	var goTopBtn = $('#goTop');   //回到顶部按钮
 	var leftPlane = $('#leftBox');    //给飞机定位 左边的 飞机
 	var rightPlane = $('#rightBox'); //右边的飞机
+	var originGotopBtnTop = goTopBtn.offsetTop;  //页面加载后回到顶部按钮距离顶部的距离
+
 	var oWindow = window;
 	function winWidth () {                                   //这个函数能够返回  window 的 宽度   兼容IE8
 		if (oWindow.innerWidth)
@@ -386,7 +388,9 @@ function targetArrow() {    //获取 目标箭头
 	}
 
 
-goTopBtn.onclick = function () {
+goTopBtn.onclick = slideToTop;
+
+function slideToTop () {
 	if (document.body.scrollTop != 0) {    
 			var body = document.body;
 		}else {
@@ -406,89 +410,39 @@ goTopBtn.onclick = function () {
 }
 
 var onOff = true;
+
+
+originGotopBtnBottom = parseInt(getStyle(goTopBtn,'bottom'));
 window.onscroll = function () {
 	var top = document.body.scrollTop || document.documentElement.scrollTop;
+	document.onclick = function () {
+	}
 	if (top > 1000) {
-		if (onOff) {
+		if(onOff) {
 			onOff = false;
 			goTopBtn.style.display = 'block';
 			setTimeout(function(){
 				goTopBtn.style.opacity = 1;
-			},10)
-			
+				goTopBtn.style.bottom = originGotopBtnBottom + 40 + 'px';
+			},1)
 		}
-	}else if (top < 1000) {
+	}else if (top <= 1000) {
 		if (!onOff) {
 			onOff = true;
+			var nTop = goTopBtn.offsetTop;
+			goTopBtn.style.bottom = originGotopBtnBottom - 40 + 'px';
 			goTopBtn.style.opacity = 0;
 			setTimeout(function(){
-			goTopBtn.style.display = 'none';
-			},600);
+				goTopBtn.style.display = 'none'
+			},300)
 		}
 	}
+	if (top > 2280) {
+		goTopBtn.style.bottom = originGotopBtnBottom + (top - 2280)*(7/9) + 'px'
+	}
+
 }
 
-
-// function slideIn () {
-// 	var startTop = goTopBtn.offsetTop;
-// 	var pieceTop = 100/25;
-// 	var pieceOpacity = 1/25;
-// 	var targetTop = startTop - 100;
-// 	var startOpacity = parseFloat(goTopBtn.style.opacity);
-// 	var goTopTimer = setInterval(function(){
-// 		startTop += pieceTop;
-// 		startOpacity -= pieceOpacity;
-// 		if (startOpacity <= 0) {
-// 			startOpacity = 0;
-// 		}
-// 		goTopBtn.style.top = startTop + 'px';
-// 		goTopBtn.style.opacity = startOpacity;
-// 		if (targetTop <= startTop) {
-// 			clearInterval(goTopTimer);
-// 			goTopBtn.style.display = 'block';
-// 		}
-// 	},13)
-// }
-// function slideOut () {
-// 	goTopBtn.style.display = 'block';
-// 	var startTop = goTopBtn.offsetTop;
-// 	console.log(startTop);
-// 	var startOpacity = parseFloat(goTopBtn.style.opacity) ;
-// 	var pieceTop = 70/25;
-// 	var pieceOpacity = 1/10;
-// 	var targetTop = startTop - 70;
-// 	var goTopTimer = setInterval (function(){
-// 		startTop -= pieceTop;
-// 		startOpacity += pieceOpacity;
-// 		if (startOpacity >= 1) {
-// 			startOpacity = 1;
-// 		}
-// 		console.log(typeof startOpacity)
-// 		goTopBtn.style.top = startTop + 'px';
-// 		goTopBtn.style.opacity = startOpacity;
-// 		if (targetTop >= startTop) {
-// 			clearInterval(goTopTimer);
-// 		}
-// 	},13)
-// }
-
-// var main = $('#main');
-// var leafTimer = setInterval (function () {
-// 	var l = winWidth()*Math.random();
-// 	console.log(l);
-// 	var ax = 20*Math.random();
-// 	console.log(ax);
-// 	var speedY = 20;
-// 	createLeaves (speedY)
-// },1000)
-
-
-// function createLeaves (speedY) {
-// 	var leaf = document.createElement('div');
-// 	leaf.className = 'leaves';
-// 	leaf.style.backgroundImage = 'url(../1.png)';
-// 	move(leaf,{top:'500px'},500,'linear');
-// }
 
 //叶子动画   叶子的初始 left随机  动画延迟随机 动画持续时间随机 
 var leavesArry = $('.leaves');  

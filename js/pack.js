@@ -57,16 +57,6 @@ function getStyle( obj , attr ){
 	return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
 }
 
-function Animate (obj,classN) {  //代理实现animate.css
-	obj.onmouseenter = function () {
-		addClass(this,'animated');
-		addClass(this,classN);
-	};
-	obj.onmouseleave = function () {
-		removeClass(this,'animated');
-		removeClass(this,classN);
-	}
-}
 function move( obj , targetJson , time , cv , fn ){//运动框架  obj：DOM对象 targetJson：目标属性Json time：所需要时间 cv：TWEEN算法 fn：毁掉函数；
 					var startTime = new Date(); //程序开始执行的时间 
 					var startVal = {}; //新进一个用来存放所需要属性的对象

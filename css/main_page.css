@@ -311,7 +311,7 @@ body {
 }
 }
 
-#main #banner-wrp .banner .isLand-con #gotocqupt {
+#gotocqupt {
 	z-index: 5;
 	position: absolute;
 	top: 26px;
@@ -319,7 +319,7 @@ body {
 	width: 535px;
 	height: 355px;
 }
-#main #banner-wrp .banner .isLand-con #leaves {
+#leaves {
 	z-index: 10;
 	position: absolute;
 	top: 31px;
@@ -328,7 +328,7 @@ body {
 	height: 350px;
 
 }
-#main #banner-wrp .banner .isLand-con #timeBar {
+#timeBar {
 	z-index: 15;
 	position: absolute;
 	top: 378px;
@@ -336,7 +336,7 @@ body {
 	width: 355px;
 	height: 44px;
 }
-#main #banner-wrp .banner .isLand-con #timeBar .tb {
+#timeBar .tb {
 	position: relative;
 	top: 2px;
 	float: left;
@@ -345,21 +345,21 @@ body {
 	padding: 0 3px ;
 	overflow: hidden;
 }
-#main #banner-wrp .banner .isLand-con #timeBar .tb.d {
+#timeBar .tb.d {
 	margin-right: 49px;
 }
-#main #banner-wrp .banner .isLand-con #timeBar .tb.h {
+#timeBar .tb.h {
 	margin-right: 57px;
 }
-#main #banner-wrp .banner .isLand-con #timeBar .tb.m {
+#timeBar .tb.m {
 	margin-right: 49px;
 }
-#main #banner-wrp .banner .isLand-con #timeBar .tb .n1 {
+#timeBar .tb .n1 {
 	position: absolute;
 	left: 5px;
 	top: 7px;
 }
-#main #banner-wrp .banner .isLand-con #timeBar .tb .n2 {
+#timeBar .tb .n2 {
 	position: absolute;
 	left: 26px;
 	top: 7px;
@@ -476,12 +476,12 @@ body {
 	height: 231px;
 	background: url('../img/QRcodeLeft.png') no-repeat center center ;
 }
-#main #map-wrp {
+#map-wrp {
 	position: relative;
 	margin-top: -20px;
 }
 
-#main #map-wrp #map-con {
+#map-con {
 	position: relative;
 	width: 1020px;
 	height: 550px;
@@ -490,7 +490,7 @@ body {
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .flag {
+#map-con .flag {
 	position: absolute;
 	bottom: 528px;
 	left: 406px;
@@ -498,7 +498,7 @@ body {
 	height: 150px;
 	background: url('../img/mapFlag.png') no-repeat center center;
 }
-#main #map-wrp #map-con .mapFrame {
+#map-con .mapFrame {
 	z-index: 10;
 	position: absolute;
 	width: 100%;
@@ -506,7 +506,7 @@ body {
 	background: url('../img/paperFrames.png') no-repeat center center;
 	cursor: default;
 }
-#main #map-wrp #map-con .map-con {
+#map-con .map-con {
 	z-index: 8;
     position: absolute;
     top: 18px;
@@ -514,12 +514,12 @@ body {
     width: 980px;
     height: 499px;
     overflow: hidden;
-    background-color: #4dccc5;
+    background-color: #7ce2cd;
     -webkit-user-select: none;  
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .map-con .img {
+#map-con .map-con .img {
 	position: relative;
 	left: 0px;
 	top: 0px;
@@ -529,21 +529,21 @@ body {
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .map-con .img img {
+#map-con .map-con .img img {
 	width: 100%;
 	height: 100%;
 	-webkit-user-select: none;  
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .map-con.con2 {
+#map-con .map-con.con2 {
 	z-index: 15;
 	background-color: transparent;
 	-webkit-user-select: none;  
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen {
+#mapScreen {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -553,7 +553,7 @@ body {
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #positionArrowCon {
+#positionArrowCon {
 	position: relative;
 	left: 0px;
 	top: 0px;
@@ -561,7 +561,7 @@ body {
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen .positionArrow {
+#mapScreen .positionArrow {
 	position: absolute;
 	width: 47px;
 	height: 58px;
@@ -571,82 +571,82 @@ body {
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #oldGate {
+#oldGate {
 	left: 344px;
 	top: 320px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #taiji {
-	left: 356px;
-	top: 108px;
+#taiji {
+	left: 383px;
+	top: 156px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #oldGround {
-	left: 366px;
-	top: 198px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #xinke {
-	left: 468px;
-	top: 298px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #yifu {
-	left: 168px;
-	top: 186px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #newGate {
-	left: 208px;
-	top: 288px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #redHouse {
-	left: 468px;
-	top: 208px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #build4 {
-	left: 156px;
-	top: 148px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #lover {
-	left: 536px;
-	top: 238px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #oldLibery {
-	left: 468px;
-	top: 238px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #libery {
-	left: 243px;
-	top: 255px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #wan80 {
-	left: 380px;
-	top: 296px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #build2 {
-	left: 390px;
-	top: 238px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #chqs {
-	left: 436px;
+#oldGround {
+	left: 376px;
 	top: 256px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #bascGround {
-	left: 396px;
-	top: 168px;
+#xinke {
+	left: 516px;
+	top: 346px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #fyGround {
-	left: 280px;
-	top: 88px;
+#yifu {
+	left: 158px;
+	top: 258px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #build3 {
-	left: 218px;
-	top: 123px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #build8 {
-	left: 218px;
-	top: 66px;
-}
-#main #map-wrp #map-con .map-con.con2 #mapScreen #positionDesc {
-	position: absolute;
+#newGate {
 	left: 186px;
-	top: 342px;
+	top: 336px;
+}
+#redHouse {
+	left: 506px;
+	top: 266px;
+}
+#build4 {
+	left: 126px;
+	top: 208px;
+}
+#lover {
+	left: 569px;
+	top: 292px;
+}
+#oldLibery {
+	left: 476px;
+	top: 288px;
+}
+#libery {
+	left: 248px;
+	top: 308px;
+}
+#wan80 {
+	left: 416px;
+	top: 338px;
+}
+#build2 {
+	left: 388px;
+	top: 296px;
+}
+#chqs {
+	left: 426px;
+	top: 306px;
+}
+#bascGround {
+	left: 398px;
+	top: 213px;
+}
+#fyGround {
+	left: 286px;
+	top: 196px;
+}
+#build3 {
+	left: 203px;
+	top: 208px;
+}
+#build8 {
+	left: 222px;
+	top: 116px;
+}
+#positionDesc {
+	position: absolute;
+	left: 164px;
+	top: 390px;
 	width: 95px;
 	height: 40px;
 	background: url('../img/positionDescBg.png') no-repeat center center;
@@ -658,29 +658,29 @@ body {
     -moz-user-select: none;    
     -ms-user-select: none; 
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen .signBox {
+#mapScreen .signBox {
 	position: absolute;
 	bottom: 29px;
 	right: 29px;
 	width: 36px;
 	height: 100px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen .signBox .sign {
+#mapScreen .signBox .sign {
 	width: 36px;
 	height: 39px;
 	cursor: pointer;
 	background-repeat: no-repeat;
 	background-position: center;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen .signBox .sign#plus {
+#mapScreen .signBox .sign#plus {
 	background: url('../img/plusSign.png');
 	margin-bottom: 10px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen .signBox .sign#minus {
+#mapScreen .signBox .sign#minus {
 	background: url('../img/minusSign.png');
 }
 
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description {
+#mapScreen #description {
 	display: none;
 	position: relative;
 	width: 466px;
@@ -690,7 +690,7 @@ body {
 	background-color: #fff;
 	border-radius: 4px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .close {
+#description .close {
 	position: absolute;
 	right: -22px;
 	top: -22px;
@@ -700,16 +700,16 @@ body {
 	transition: .3s all ease;
 	cursor: pointer;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .close:hover {
+#description .close:hover {
 	transform: rotate(90deg);
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo {
+#description .lunbo {
 	position: relative;
 	width: 100%;
 	height: 188px;
 	overflow: hidden;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo .arrow {
+#description .lunbo .arrow {
 	z-index: 1;
 	position: absolute;
 	top: 63px;
@@ -717,22 +717,22 @@ body {
 	height: 61px;
 	cursor: pointer;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo .arrow.next {
+#description .lunbo .arrow.next {
 	background: url('../img/nextArrow.png') no-repeat center center;
 	right: 0;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo .arrow.prev {
+#description .lunbo .arrow.prev {
 	display: none;
 	background: url('../img/prevArrow.png') no-repeat center center;
 	left: 0;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo #lunbo-con {
+#description .lunbo #lunbo-con {
 	position: relative;
 	left: 0;
 	width: 200%;
 	height: 100%;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo #lunbo-con li {
+#lunbo-con li {
 	float: left;
 	width: 466px;
 	height: 100%;
@@ -740,24 +740,23 @@ body {
 	background-position: center;
 	background-size: 100%
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo #lunbo-con li:nth-child(1) {
+#lunbo-con li:nth-child(1) {
 	background: black;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .lunbo #lunbo-con li:nth-child(2) {
+#lunbo-con li:nth-child(2) {
 	background-color: red;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .desc {
+#description .desc {
 	display: block;
 	width: 100%;
 	height: 82px;
 	margin-top: 10px;
-	text-align: center;
 }	
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .close .desc #seneryTitle {
+#seneryTitle {
 	text-align: center;
 	font-size: 18px;
 }
-#main #map-wrp #map-con .map-con.con2 #mapScreen #description .close .desc #seneryDesc {
+#seneryDesc {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: center;
@@ -925,7 +924,7 @@ body {
 	position: absolute;
 	left: 418px;
 	bottom: 250px;
-	width: 218px;
+	width: 255px;
 	height: 94px;
 	background: url('../img/know.png') no-repeat center center;
 }
@@ -939,6 +938,8 @@ body {
 
 #main #description-wrp .forum .content .l img {
 	margin: 12px 16px 0;
+	width: 384px;
+	height: 221px;
 }
 #main #description-wrp .forum .content .r {
 	float: right;
@@ -1011,15 +1012,14 @@ body {
 	z-index: 100;
 	position: fixed;
 	right: 40px;
-	bottom: 100px;
+	bottom: 60px;
 	width: 112px;
 	height: 108px;
 	background: url('../img/returnTop.png') no-repeat center center;
 	cursor: pointer;
-	transition: .75s opacity linear;
 	display: none;
 	opacity: 0;
-	transition: 600 all linear;
+	transition: 0.2s all linear;
 }
 
 

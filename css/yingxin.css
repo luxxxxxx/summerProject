@@ -179,6 +179,21 @@ a {
     font-size: 14px;
     font-weight: bold;
     letter-spacing: 1px;
-    
     color: #ddb383;
+}
+#fixWrp {
+    position: relative;
+    width: 980px;
+    height: 0px;
+    margin: 22px auto 0;
+}
+#fixWrp #goTop {
+    z-index: 100;
+    position: absolute;
+    top: -36px;
+    right: -178px;
+    width: 112px;
+    height: 108px;
+    background: url('../img/returnTop.png') no-repeat center center;
+    cursor: pointer;
 }

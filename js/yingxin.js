@@ -28,43 +28,23 @@ function addEvent (ele, event, hanlder) {
     })
 
 
-        // 回到顶部
-    function backToTop () {
-        var viewHeight = document.documentElement.clientHeight;
-        var btn = $('.to-top-btn')[0],
-            body = document.querySelector('body');
-        function hanlder () {
-            function decrease () {
-                var pHeight = document.documentElement.scrollTop || document.body.scrollTop;
-                var speed = pHeight / 9;
-                document.documentElement.scrollTop -= speed;
-                body.scrollTop -= speed;
-                if (pHeight === 0) {
+    // 回到顶部
+    $('#goTop').onclick = function () {
+        if (document.body.scrollTop != 0) {    
+            var body = document.body;
+        }else {
+            var body = document.documentElement;   //ie8获取距离页面顶端方式不一样
+        }
+        if ( body.scrollTop != 0) {
+            var distancePiece = body.scrollTop/25;
+            var timer = setInterval(function () {
+                if ( body.scrollTop <= distancePiece ) {
+                    body.scrollTop = 0;
                     clearInterval(timer);
+                }else {
+                    body.scrollTop -= distancePiece;
                 }
-            }
-            var timer = setInterval(decrease, 20);
-            addEvent(window, 'mousewheel', function () {
-                clearInterval(timer);
-            })
-            addEvent(window, 'DOMMouseScroll', function () {
-                clearInterval(timer);
-            })
+            },20)
         }
-        // 按钮显示隐藏
-        var flag = 0;
-        function disp () {
-            var pHeight = document.documentElement.scrollTop || document.body.scrollTop;
-            if (pHeight > 500) {
-                btn.style.opacity = '1';
-            }
-            if (pHeight <= 500) {
-                btn.style.opacity = '0';
-            }
-        }
-        addEvent(btn, 'click', hanlder);
-        body.onscroll = disp;
     }
-
-    backToTop();
 })()

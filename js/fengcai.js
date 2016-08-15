@@ -44,7 +44,6 @@
 				clearInterval(timer);
 				innerSlideCon.onscroll = function () {
 					var top = this.scrollTop;
-					console.log(top);
 					if (top < aTop[1]) {
 						if (!hasClass(aLSlt[0],'select')) {
 							toggleClass(0);
@@ -87,7 +86,7 @@
 				removeClass(zswSltArr[i],'select');
 			}
 			addClass(this,'select');
-			move(slideCon,{left:-this.index*contentW + 'px'},450,'easeOut',function(){console.log(slideCon)});
+			move(slideCon,{left:-this.index*contentW + 'px'},450,'easeOut');
 		}
 	}
 	for (var i = 0; i < aLSltL; i++) {
@@ -109,7 +108,6 @@
 	var aTeacherArrow = $('.teacher-arrow');
 	var aXueziArrow = $('.xuezi-arrow');
 	var aSlideDownCon = $('.slideDownCon');
-	console.log(aSlideDownCon.length);
 	var videoSlideCon = $('#videoSlideCon');
 	var teacherSlideCon = $('#teacherSlideCon');
 	var videoSlideCon = $('#videoSlideCon');
@@ -147,18 +145,28 @@
 			if (this.index === 0) {
 				move(videoSlideCon,{left:'0px'},350,'easeOut')
 			}else if (this.index === 1) {
-				move(videoSlideCon,{left:'-825px'},350,'easeOut')
+				move(videoSlideCon,{left:'0px'},350,'easeOut')
 			}
 		}
 	}
+	var currentTeacherCon = 0;
 	for ( var i = aTeacherArrow.length - 1; i >= 0; i-- ) {
 		aTeacherArrow[i].index = i;
 		aTeacherArrow[i].onclick = function () {
 			if (this.index === 0) {
-				move(teacherSlideCon,{left:'0px'},350,'easeOut')
+				if (currentTeacherCon != 0) {
+					currentTeacherCon --;
+				}else {
+					currentTeacherCon = 2;
+				}
 			}else if (this.index === 1) {
-				move(teacherSlideCon,{left:'-825px'},350,'easeOut')
+				if (currentTeacherCon < 2) {
+					currentTeacherCon ++;
+				}else {
+					currentTeacherCon = 0;
+				}
 			}
+			move(teacherSlideCon,{left: -825*currentTeacherCon + 'px'},350,'easeOut')
 		}
 	}
 	for ( var i = aXueziArrow.length - 1; i >= 0; i-- ) {
@@ -172,6 +180,24 @@
 		}
 	}
 
-
+	// 回到顶部
+    $('#goTop').onclick = function () {
+        if (document.body.scrollTop != 0) {    
+            var body = document.body;
+        }else {
+            var body = document.documentElement;   //ie8获取距离页面顶端方式不一样
+        }
+        if ( body.scrollTop != 0) {
+            var distancePiece = body.scrollTop/25;
+            var timer = setInterval(function () {
+                if ( body.scrollTop <= distancePiece ) {
+                    body.scrollTop = 0;
+                    clearInterval(timer);
+                }else {
+                    body.scrollTop -= distancePiece;
+                }
+            },20)
+        }
+    }
 
 })()
