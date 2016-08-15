@@ -123,7 +123,7 @@
     })
 
 
-    // 组织类
+    // 组织类  该类随机选择
     var urlArr = ['http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E9%80%9A%E4%BF%A1', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E8%AE%A1%E7%AE%97%E6%9C%BA', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E8%87%AA%E5%8A%A8%E5%8C%96', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E5%85%89%E7%94%B5', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E7%94%9F%E7%89%A9', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E6%95%B0%E7%90%86', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E6%B3%95%E5%AD%A6%E9%99%A2', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E4%BC%A0%E5%AA%92', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E4%BD%93%E8%82%B2', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E8%BD%AF%E4%BB%B6', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E5%A4%96%E5%9B%BD%E8%AF%AD', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E5%9B%BD%E9%99%85', 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/search/tag/%E5%85%88%E8%BF%9B%E5%88%B6%E9%80%A0'];
     ajax({
         'type'   : 'GET',
@@ -134,7 +134,7 @@
         }
     })
 
-    // 获取问题
+    // 获取问题并输出
     function getdata (data, itemName, titleName, autorName, timeName) {
         var title = $('.' + titleName);
         var autor = $('.' + autorName);
@@ -164,7 +164,7 @@
         }
     }
 
-    // 获取对应问题的回答
+    // 获取对应问题的回答和评论
     addEvent($('.answer-close')[0], 'click', function () {
         $('.answer-box')[0].style.display = 'none';
     })
@@ -175,6 +175,7 @@
             answerBox = $('.answer-main')[0];
         var title = $(titleName);
 
+        // 为每个问题设置弹框
         for (var i = 0; i < data.length; i++) {
             addEvent(title[i], 'click', (function (n) {
                 return function () {
@@ -207,20 +208,21 @@
                         'success': function (newData) {
                             var s = '';
                             var nowTime = new Date();
-
+                            // 获取该问题的所有回复评论
                             for (var j = 0; j < newData['comment'].length; j++) {
                                 var timeStr = newData['comment'][j]['create_time'].split(' ');
                                 var timeSec = new Date(timeStr[0]);
                                 var len = newData['comment'][j]['pic_name'].length,
                                     imgStr = '';
 
+                                // 获取每个评论的时间
                                 if (nowTime.getDate() !== timeSec.getDate()) {
                                     timeStr = timeStr[0].split('-')[1] + '月' + timeStr[0].split('-')[2] + '日';
                                 } else {
                                     timeStr = timeStr[1].split(':')[0] + '点' + timeStr[1].split(':')[1] + '分';
                                 }
 
-                                // console.log(len);
+                                // 对每个评论进行判断是否含有图片
                                 if (len === 0) {
                                     s += '<div class="answer-item"><div class="answer-user">' + newData['comment'][j]['name'] + '：' + '</div>' + '<p class="answer-content">' + newData['comment'][j]['content'] + '</p>' + '<div class="answer-time">' + timeStr + '</div></div>';
                                 } else {
@@ -231,6 +233,7 @@
                                     s += '<div class="answer-item"><div class="answer-user">' + newData['comment'][j]['name'] + '：' + '</div>' + '<p class="answer-content">' + newData['comment'][j]['content'] + imgStr + '</p>' + '<div class="answer-time">' + timeStr + '</div></div>';
                                 }
                             }
+                            // 将所有评论输出到弹框中
                             answerBox.innerHTML = s;
                         }
                     })

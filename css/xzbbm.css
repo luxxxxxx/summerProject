@@ -283,6 +283,8 @@ a {
     float: left;
     height: 331px;
     width: 914px;
+
+    overflow-y: auto;
 }
 .ques-header {
     padding-left: 20px;
@@ -307,6 +309,8 @@ a {
 }
 .ques-author {
     margin-left: 653px;
+
+    text-align: left;
 }
 .ques-content {
     position: relative;
@@ -319,6 +323,9 @@ a {
     line-height: 40px;
 
     color: #c99c68;
+}
+.ques-content .ques-author {
+    margin-left: 647px;
 }
 .content-people {
     padding-left: 22px;
@@ -434,5 +441,24 @@ a {
     display: none;
 }
 .answer-main::-webkit-scrollbar-border {
+    background-color: #000;
+}
+
+.ques-item::-webkit-scrollbar {
+    width: 12px;
+}
+.ques-item::-webkit-scrollbar-track {
+    // height: 376px;
+    background-color: #ffee89;
+}
+
+.ques-item::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #fff9d3; 
+}
+.ques-item::-webkit-scrollbar-button {
+    display: none;
+}
+.ques-item::-webkit-scrollbar-border {
     background-color: #000;
 }
