@@ -263,7 +263,11 @@
                     nameStr = '',
                     collegeStr = '';
                 // data[i]['photo']
-                imgStr += '<div class="people-avatar"><img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + 'base6457b09cd5bf5f3' + '"></div>'
+                if (data[i]['photo'] === null) {
+                    imgStr += '<div class="people-avatar"><img src="' + 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + 'base6457b09cd5bf5f3' + '"></div>'
+                } else {
+                    imgStr += '<div class="people-avatar"><img src="' + 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + data[i]['photo'] + '"></div>'
+                }
                 nameStr += '<div class="pelple-name">' + data[i]['name'] + '</div>';
                 collegeStr = '<div class="people-academy">' + data[i]['college'] + '</div>'
                 s += '<div class="people-item people-fir">' + imgStr + nameStr + collegeStr + '</div>';
@@ -275,8 +279,14 @@
                 addEvent(xz[j], 'click', (function (n) {
                     return function () {
                         var str = '';
+                        var imgStr = '';
+                        if (data[n]['photo'] === null) {
+                            imgStr = '<img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + 'base6457b09cd5bf5f3' + '" alt="">';
+                        } else {
+                            imgStr = '<img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + data[n]['photo'] + '" alt="">';
+                        }
                         xzBox.style.display = 'block';
-                        str = '<div class="xz-info-avatar"><img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + 'base6457b09cd5bf5f3' + '" alt=""></div><div class="xz-name">' + data[n]['name'] + '</div><p class="xz-intr">' + data[n]['biography'] + '</p>'
+                        str = '<div class="xz-info-avatar">' + imgStr + '</div><div class="xz-name">' + data[n]['name'] + '</div><p class="xz-intr">' + data[n]['biography'] + '</p>'
                         xzInfo.innerHTML = str;
                     }
                 })(j))
