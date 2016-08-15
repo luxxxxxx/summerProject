@@ -264,9 +264,9 @@
                     collegeStr = '';
                 // data[i]['photo']
                 if (data[i]['photo'] === null) {
-                    imgStr += '<div class="people-avatar"><img src="' + 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + 'base6457b09cd5bf5f3' + '"></div>'
+                    imgStr += '<div class="people-avatar"><img src="img/gonglue/mr.jpg" alt=""></div>'
                 } else {
-                    imgStr += '<div class="people-avatar"><img src="' + 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + data[i]['photo'] + '"></div>'
+                    imgStr += '<div class="people-avatar"><img src="' + 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + data[i]['photo'] +'" alt=""></div>'
                 }
                 nameStr += '<div class="pelple-name">' + data[i]['name'] + '</div>';
                 collegeStr = '<div class="people-academy">' + data[i]['college'] + '</div>'
@@ -281,7 +281,7 @@
                         var str = '';
                         var imgStr = '';
                         if (data[n]['photo'] === null) {
-                            imgStr = '<img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + 'base6457b09cd5bf5f3' + '" alt="">';
+                            imgStr = '<img src="img/gonglue/mr.jpg" alt="">';
                         } else {
                             imgStr = '<img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + data[n]['photo'] + '" alt="">';
                         }
