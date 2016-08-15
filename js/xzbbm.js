@@ -243,21 +243,45 @@
     }
 
 
-    var xz = $('.people-item');
-    var xzBox = $('.xz-box')[0];
+    var xz = $('.people-item'),
+        xzBox = $('.xz-box')[0],
+        xzInfo = $('.xz-info')[0],
         xzClose = $('.xz-close')[0];
 
     addEvent(xzClose, 'click', function () {
         xzBox.style.display = 'none';
     })
 
-    for (var i = 0; i < xz.length; i++) {
-        addEvent(xz[i], 'click', (function (n) {
-            return function () {
-                xzBox.style.display = 'block';
-
+    ajax({
+        'type'   : 'GET',
+        'url'    : 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/userRandom/5',
+        'success': function (data) {
+            var peopleContent = $('.content-people')[0];
+            var s = '';
+            for (var i = 0; i < 5; i++) {
+                var imgStr = '',
+                    nameStr = '',
+                    collegeStr = '';
+                // data[i]['photo']
+                imgStr += '<div class="people-avatar"><img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + 'base6457b09cd5bf5f3' + '"></div>'
+                nameStr += '<div class="pelple-name">' + data[i]['name'] + '</div>';
+                collegeStr = '<div class="people-academy">' + data[i]['college'] + '</div>'
+                s += '<div class="people-item people-fir">' + imgStr + nameStr + collegeStr + '</div>';
             }
-        })(i))
-    }
+
+            peopleContent.innerHTML = s;
+
+            for (var j = 0; j < 5; j++) {
+                addEvent(xz[j], 'click', (function (n) {
+                    return function () {
+                        var str = '';
+                        xzBox.style.display = 'block';
+                        str = '<div class="xz-info-avatar"><img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + 'base6457b09cd5bf5f3' + '" alt=""></div><div class="xz-name">' + data[n]['name'] + '</div><p class="xz-intr">' + data[n]['biography'] + '</p>'
+                        xzInfo.innerHTML = str;
+                    }
+                })(j))
+            }
+        }
+    })
 
 })();

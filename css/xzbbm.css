@@ -116,6 +116,7 @@ a {
 }
 .xz-close {
     position: absolute;
+    z-index: 100;
     top: -20px;
     right: -20px;
 
@@ -125,8 +126,9 @@ a {
     border-radius: 100%;
     cursor: pointer;
 }
-.xz-info {
+.xz-wrap {
     position: absolute;
+    z-index: 90;
     top: 971px;
     left: 50%;
 
@@ -134,7 +136,14 @@ a {
     width: 402px;
     margin-left: -201px;
     border-radius: 10px;
+}
+.xz-info {
+    position: absolute;
 
+    height: 435px;
+    width: 402px;
+    border-radius: 10px;
+    
     background-color: #fffef1;
 }
 .xz-info-avatar {
@@ -156,6 +165,7 @@ a {
     color: #333;
 }
 .xz-intr {
+    height: 110px;
     padding-left: 23px;
     padding-right: 23px;
 
@@ -163,6 +173,7 @@ a {
     line-height: 20px;
     
     color: #666;
+    overflow-y: auto;
 }
 .to-top-btn {
     opacity: 0;
@@ -351,6 +362,9 @@ a {
     cursor: pointer;
     background-color: #fff;
 }
+.people-item:nth-child(5) {
+    margin-right: 0px;
+}
 .people-fir {
     margin-right: 26px;
 }
@@ -460,5 +474,25 @@ a {
     display: none;
 }
 .ques-item::-webkit-scrollbar-border {
+    background-color: #000;
+}
+
+
+.xz-intr::-webkit-scrollbar {
+    width: 12px;
+}
+.xz-intr::-webkit-scrollbar-track {
+    // height: 376px;
+    background-color: #ffee89;
+}
+
+.xz-intr::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #fff9d3; 
+}
+.xz-intr::-webkit-scrollbar-button {
+    display: none;
+}
+.xz-intr::-webkit-scrollbar-border {
     background-color: #000;
 }
