@@ -394,10 +394,7 @@ th {
 }
 .side-need-kown {
     height: 696px;
-    width: 880px;
-    margin-left: 69px;
-    overflow-y: scroll;
-    scrollbar-face-color: #ffee89;
+    padding-left: 40px;
 }
 .need-kown-content {
     font-size: 14px;
@@ -410,7 +407,6 @@ th {
     padding-top: 44px;
     padding-bottom: 49px;
     margin-bottom: 19px;
-    border-bottom: 1px solid #eee;
 
     background-color: #fff;
 }

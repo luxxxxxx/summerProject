@@ -140,8 +140,8 @@ function checkout () {
     var warp = $('.guidance-content-wrap');
     var btn = $('.guid-btn');
     var glContain = $('.cqupt-gonglue');
-    var sidebar = $('.guidance-side-bar'),
-        sidebarItem = $('.side-bar-item');
+    // var sidebar = $('.guidance-side-bar'),
+        // sidebarItem = $('.side-bar-item');
     // 导航一
     navCheckout(nav[0], glNav, 'guidance-nav-item', 'gl-nav-active', 'click');
     for (var i = 0; i < glNav.length; i++) {
@@ -178,55 +178,55 @@ function checkout () {
         glContain[1].style.right = '0px';
     })
     //sidebar
-    navCheckout(sidebar[0], sidebarItem, 'side-bar-item', 'side-bar-active', 'click');
+    // navCheckout(sidebar[0], sidebarItem, 'side-bar-item', 'side-bar-active', 'click');
 }
 checkout();
 
 (function () {
-    var scroll = $('.side-need-kown')[0];
-    var sidebarItem = $('.side-bar-item');
-    var flag = 0;
-    sidebar(sidebarItem[0], 0, scroll);
-    sidebar(sidebarItem[1], 638, scroll);
-    sidebar(sidebarItem[2], 5932, scroll);
-    sidebar(sidebarItem[3], 7750, scroll);
+    // var scroll = $('.side-need-kown')[0];
+    // var sidebarItem = $('.side-bar-item');
+    // var flag = 0;
+    // sidebar(sidebarItem[0], 0, scroll);
+    // sidebar(sidebarItem[1], 638, scroll);
+    // sidebar(sidebarItem[2], 5932, scroll);
+    // sidebar(sidebarItem[3], 7750, scroll);
 
     // 声明flag变量来控制滚动条还没结束时再次点击触发滚动条发生的冲突bug
-    function sidebar (ele, pos, scrollContainer, time) {
-        addEvent(ele, 'click', function () {
-            if (flag === 0) {
-                flag = 1;
-                function  changePos () {
-                    var y = scrollContainer.scrollTop,
-                        dis = pos - y,
-                        speed = dis / 7;
-                    scrollContainer.scrollTop += speed;
-                    if (Math.abs(dis) < 10) {
-                        clearInterval(time);
-                        flag = 0;
-                    }
-                }
-                time = setInterval(changePos, 20);
-            }
-        })
-    }
+    // function sidebar (ele, pos, scrollContainer, time) {
+    //     addEvent(ele, 'click', function () {
+    //         if (flag === 0) {
+    //             flag = 1;
+    //             function  changePos () {
+    //                 var y = scrollContainer.scrollTop,
+    //                     dis = pos - y,
+    //                     speed = dis / 7;
+    //                 scrollContainer.scrollTop += speed;
+    //                 if (Math.abs(dis) < 10) {
+    //                     clearInterval(time);
+    //                     flag = 0;
+    //                 }
+    //             }
+    //             time = setInterval(changePos, 20);
+    //         }
+    //     })
+    // }
     // 滚动条滚动对应sidebar按钮样式改变
-    addEvent(scroll, 'scroll', function () {
-        var pos = scroll.scrollTop;
-        if (pos <= 484) {
-            clearClassName(sidebarItem, 'side-bar-item');
-            addClass(sidebarItem[0], 'side-bar-active');
-        } else if (pos < 5800 && pos > 484) {
-            clearClassName(sidebarItem, 'side-bar-item');
-            addClass(sidebarItem[1], 'side-bar-active');
-        } else if (pos >= 5800 && pos < 7527) {
-            clearClassName(sidebarItem, 'side-bar-item');
-            addClass(sidebarItem[2], 'side-bar-active');
-        } else {
-            clearClassName(sidebarItem, 'side-bar-item');
-            addClass(sidebarItem[3], 'side-bar-active');
-        }
-    })
+    // addEvent(scroll, 'scroll', function () {
+    //     var pos = scroll.scrollTop;
+    //     if (pos <= 484) {
+    //         clearClassName(sidebarItem, 'side-bar-item');
+    //         addClass(sidebarItem[0], 'side-bar-active');
+    //     } else if (pos < 5800 && pos > 484) {
+    //         clearClassName(sidebarItem, 'side-bar-item');
+    //         addClass(sidebarItem[1], 'side-bar-active');
+    //     } else if (pos >= 5800 && pos < 7527) {
+    //         clearClassName(sidebarItem, 'side-bar-item');
+    //         addClass(sidebarItem[2], 'side-bar-active');
+    //     } else {
+    //         clearClassName(sidebarItem, 'side-bar-item');
+    //         addClass(sidebarItem[3], 'side-bar-active');
+    //     }
+    // })
 
     // 回到顶部
     $('#goTop').onclick = function () {
