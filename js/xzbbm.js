@@ -266,11 +266,12 @@
                 if (data[i]['photo'] === null) {
                     imgStr += '<div class="people-avatar"><img src="img/gonglue/mr.jpg" alt=""></div>'
                 } else {
-                    imgStr += '<div class="people-avatar"><img src="' + 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + data[i]['photo'] +'" alt=""></div>'
+                    imgStr += '<div class="people-avatar"><img src="' + data[i]['photo'] +'" alt=""></div>'
                 }
                 nameStr += '<div class="pelple-name">' + data[i]['name'] + '</div>';
                 collegeStr = '<div class="people-academy">' + data[i]['college'] + '</div>'
                 s += '<div class="people-item people-fir">' + imgStr + nameStr + collegeStr + '</div>';
+                console.log(data[i]['photo']);
             }
 
             peopleContent.innerHTML = s;
@@ -283,7 +284,7 @@
                         if (data[n]['photo'] === null) {
                             imgStr = '<img src="img/gonglue/mr.jpg" alt="">';
                         } else {
-                            imgStr = '<img src="http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/showImg/' + data[n]['photo'] + '" alt="">';
+                            imgStr = '<img src="' + data[n]['photo'] + '" alt="">';
                         }
                         xzBox.style.display = 'block';
                         str = '<div class="xz-info-avatar">' + imgStr + '</div><div class="xz-name">' + data[n]['name'] + '</div><p class="xz-intr">' + data[n]['biography'] + '</p>'

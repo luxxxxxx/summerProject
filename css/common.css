@@ -258,9 +258,9 @@ body {
 #main #banner-wrp {
 	margin-top: 50px;
 }
-#main #banner-wrp  {
-}
+
 #main #banner-wrp .banner {
+	z-index: 0;
 	width: 1010px;
 	height: 745px;
 	margin: 0 auto;
@@ -417,6 +417,9 @@ body {
 	0% {transform: translate(0px,-15px);}
 	50% {transform: translate(0px,15px);}
 	100% {transform: translate(0px,-15px);}
+}
+#main .fixedBox {
+	z-index: 1;
 }
 #main .fixedBox#rightBox .plane {
 	top: 10px;

@@ -10,7 +10,7 @@ var s2 = $('#s2');
 var positionArr = ['5px','-30px','-66px','-102px','-137px','-173','-209','-244','-280','-316'];
 
 var timer = setInterval(function(){
-	var targetTime = new Date(2016,8,5,0,0);
+	var targetTime = new Date(2016,8,7,0,0);
 	var time = targetTime - new Date();
 	var s = parseInt(time/1000 %60);
 	var m = parseInt(time/1000/60 %60);

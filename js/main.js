@@ -437,10 +437,9 @@ window.onscroll = function () {
 			},300)
 		}
 	}
-	if (top > 2280) {
-		goTopBtn.style.bottom = originGotopBtnBottom + (top - 2280)*(7/9) + 'px'
+	if (top > 2190) {
+		goTopBtn.style.bottom = originGotopBtnBottom + (top - 2190)*(7/9) + 'px'; //神秘算法
 	}
-
 }
 
 
@@ -450,5 +449,7 @@ for (var i = 0; i < leavesArry.length; i++) {
 	leavesArry[i].style.left = Math.random()*winWidth() + 'px';
 	var n = Math.ceil(Math.random()*3);
 	addClass(leavesArry[i],'dur' + n);
-	addClass(leavesArry[i],'delay' +n)
+	addClass(leavesArry[i],'delay' + n)
 }
+
+console.log('红岩网校2016新生专题网前端项目组成员：刘竣豪、刘荣博、赵晏')  //神秘console
