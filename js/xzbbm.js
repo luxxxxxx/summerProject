@@ -181,26 +181,7 @@
                 return function () {
                     box.style.display = 'block';
                     asker.innerHTML =  '提问者：' + data[n]['name'];
-                    // ajaxPost({
-                    //     'type'   : 'POST',
-                    //     'url'    : 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/reply',
-                    //     'postStr': data[n]['Id'] + ' content pic',
-                    //     'success': function (newData) {
-                    //         var s = '';
-                    //         var nowTime = new Date();
-                    //         for (var j = 0; j < newData.length; j++) {
-                    //             var timeStr = newData[j]['create_time'].split(' ');
-                    //             var timeSec = new Date(timeStr[0]);
-                    //             if (nowTime.getDate() !== timeSec.getDate()) {
-                    //                 timeStr = timeStr[0].split('-')[1] + '月' + timeStr[0].split('-')[2] + '日';
-                    //             } else {
-                    //                 timeStr = timeStr[1].split(':')[0] + '时' + timeStr[1].split(':')[1] + '分';
-                    //             }
-                    //             s += '<div class="answer-item"><div class="answer-user">' + newData[j]['name'] + ':' + '</div>' + '<p class="answer-content">' + newData[j]['content'] + '</p>' + '<div class="answer-time">' + timeStr + '</div></div>';
-                    //         }
-                    //         answerBox.innerHTML = s;
-                    //     }
-                    // })
+                    
                     ajax({
                         'type'   : 'GET',
                         'url'    : 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/question/' + data[n]['Id'],
@@ -243,56 +224,56 @@
     }
 
 
-    var xz = $('.people-item'),
-        xzBox = $('.xz-box')[0],
-        xzInfo = $('.xz-info')[0],
-        xzClose = $('.xz-close')[0];
+    // var xz = $('.people-item'),
+    //     xzBox = $('.xz-box')[0],
+    //     xzInfo = $('.xz-info')[0],
+    //     xzClose = $('.xz-close')[0];
 
-    addEvent(xzClose, 'click', function () {
-        xzBox.style.display = 'none';
-    })
+    // addEvent(xzClose, 'click', function () {
+    //     xzBox.style.display = 'none';
+    // })
 
-    ajax({
-        'type'   : 'GET',
-        'url'    : 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/userRandom/5',
-        'success': function (data) {
-            var peopleContent = $('.content-people')[0];
-            var s = '';
-            for (var i = 0; i < 5; i++) {
-                var imgStr = '',
-                    nameStr = '',
-                    collegeStr = '';
-                // data[i]['photo']
-                if (data[i]['photo'] === null) {
-                    imgStr += '<div class="people-avatar"><img src="img/gonglue/mr.jpg" alt=""></div>'
-                } else {
-                    imgStr += '<div class="people-avatar"><img src="' + data[i]['photo'] +'" alt=""></div>'
-                }
-                nameStr += '<div class="pelple-name">' + data[i]['name'] + '</div>';
-                collegeStr = '<div class="people-academy">' + data[i]['college'] + '</div>'
-                s += '<div class="people-item people-fir">' + imgStr + nameStr + collegeStr + '</div>';
-                console.log(data[i]['photo']);
-            }
+    // ajax({
+    //     'type'   : 'GET',
+    //     'url'    : 'http://hongyan.cqupt.edu.cn/XZBBM/index.php/api/userRandom/5',
+    //     'success': function (data) {
+    //         var peopleContent = $('.content-people')[0];
+    //         var s = '';
+    //         for (var i = 0; i < 5; i++) {
+    //             var imgStr = '',
+    //                 nameStr = '',
+    //                 collegeStr = '';
+    //             // data[i]['photo']
+    //             if (data[i]['photo'] === null) {
+    //                 imgStr += '<div class="people-avatar"><img src="img/gonglue/mr.jpg" alt=""></div>'
+    //             } else {
+    //                 imgStr += '<div class="people-avatar"><img src="' + data[i]['photo'] +'" alt=""></div>'
+    //             }
+    //             nameStr += '<div class="pelple-name">' + data[i]['name'] + '</div>';
+    //             collegeStr = '<div class="people-academy">' + data[i]['college'] + '</div>'
+    //             s += '<div class="people-item people-fir">' + imgStr + nameStr + collegeStr + '</div>';
+    //             console.log(data[i]['photo']);
+    //         }
 
-            peopleContent.innerHTML = s;
+    //         peopleContent.innerHTML = s;
 
-            for (var j = 0; j < 5; j++) {
-                addEvent(xz[j], 'click', (function (n) {
-                    return function () {
-                        var str = '';
-                        var imgStr = '';
-                        if (data[n]['photo'] === null) {
-                            imgStr = '<img src="img/gonglue/mr.jpg" alt="">';
-                        } else {
-                            imgStr = '<img src="' + data[n]['photo'] + '" alt="">';
-                        }
-                        xzBox.style.display = 'block';
-                        str = '<div class="xz-info-avatar">' + imgStr + '</div><div class="xz-name">' + data[n]['name'] + '</div><p class="xz-intr">' + data[n]['biography'] + '</p>'
-                        xzInfo.innerHTML = str;
-                    }
-                })(j))
-            }
-        }
-    })
+    //         for (var j = 0; j < 5; j++) {
+    //             addEvent(xz[j], 'click', (function (n) {
+    //                 return function () {
+    //                     var str = '';
+    //                     var imgStr = '';
+    //                     if (data[n]['photo'] === null) {
+    //                         imgStr = '<img src="img/gonglue/mr.jpg" alt="">';
+    //                     } else {
+    //                         imgStr = '<img src="' + data[n]['photo'] + '" alt="">';
+    //                     }
+    //                     xzBox.style.display = 'block';
+    //                     str = '<div class="xz-info-avatar">' + imgStr + '</div><div class="xz-name">' + data[n]['name'] + '</div><p class="xz-intr">' + data[n]['biography'] + '</p>'
+    //                     xzInfo.innerHTML = str;
+    //                 }
+    //             })(j))
+    //         }
+    //     }
+    // })
 
 })();

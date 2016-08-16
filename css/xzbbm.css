@@ -190,7 +190,7 @@ a {
 .content-wrap {
     position: relative;
     
-    height: 890px;
+    height: 839px;
     width: 960px;
     padding: 0px 21px 0px 21px;
     margin: -71px auto 0px;
@@ -268,7 +268,7 @@ a {
     position: relative;
     z-index: 7;
 
-    height: 331px;
+    height: 590px;
     width: 914px;
     margin: 0 auto;
     border: 1px solid #fff5c4;
@@ -292,7 +292,7 @@ a {
 }
 .ques-item {
     float: left;
-    height: 331px;
+    height: 590px;
     width: 914px;
 
     overflow-y: auto;
@@ -394,7 +394,7 @@ a {
 .learn-more {
     height: 70px;
     width: 914px;
-    margin: 0 auto;
+    margin: 32px auto 0px;
     border: 1px solid #fff5c4;
     border-radius: 10px;
 
