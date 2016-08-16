@@ -260,6 +260,7 @@ body {
 }
 
 #main #banner-wrp .banner {
+
 	z-index: 0;
 	width: 1010px;
 	height: 745px;
@@ -272,6 +273,8 @@ body {
 }
 #main #banner-wrp .banner .isLand-con #islandImg {
 	position: absolute;
+	left: 1px;
+	top: -2px;
 	z-index: 4;
 	width: 1010px;
 	height: 745px;
