@@ -1,0 +1,385 @@
+#main {
+	height: 1788px;
+}
+#fengcai-con {
+	z-index: 15;
+	position: relative;
+	width: 967px;
+	height: 850px;
+	margin: 0 auto;
+	padding: 33px 18px 18px;
+	background-color: #fffadd;
+}
+#fengcai-con .flag {
+	position: absolute;
+	top: -103px;
+	left: 388px;
+	width: 217px;
+	height: 105px;
+	background: url('../img/fengcai.png') no-repeat center center;
+}
+
+#fengcai-con .container {
+	z-index: 1;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+#fengcai-con .btn-con {
+	width: 638px;
+	margin: 9px auto;
+}
+#fengcai-con .btn-con .btn {
+	float: left;
+	width: 153px;
+	height: 55px;
+	text-align:  center;
+	background: url('../img/fengcai/btn-bg.png') center;
+	background-repeat: repeat;
+	cursor: pointer;
+}
+#fengcai-con .btn-con .btn.select {
+	background: url('../img/fengcai/btn-select-bg.png') center;
+}
+#fengcai-con .btn-con .btn.select a {
+	color: #fff;
+}
+#fengcai-con .btn-con .btn.s-btn {
+	width: 166px;
+}
+#fengcai-con .btn-con .btn.s-btn.l {
+	border-radius: 33px 0 0 33px;
+}
+#fengcai-con .btn-con .btn.s-btn.r {
+	border-radius: 0 33px 33px 0;
+}
+#fengcai-con .btn-con .btn a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-size: 24px;
+	color: #f89316;
+	line-height: 55px;
+}
+#fengcai-con .slide-con {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 776px;
+}
+.slideDownCon {
+	position: absolute;
+	top: 770px;
+	width: 100%;
+	height: 751px;
+	margin-top: 15px;
+	transition: .5s top linear;
+}
+.slideDownCon.current {
+	top: 0;
+}
+#student-content {
+	float: left;
+	
+}
+#student-content .top-slt-con {
+	position: relative;
+	width: 100%;
+	height: 57px;
+}
+#student-content .top-slt-con .slt {
+	float: left;
+	width: 303px;
+	height: 43px;
+	margin-right: 21px;
+	margin-top: 14px;
+	background: url('../img/fengcai/slt-bg.png') repeat center center;
+	text-align: center;
+	font-size: 23px;
+	line-height: 46px;
+	border-radius: 4px 4px 0 0;
+	transition: .1s all linear;
+	cursor: pointer;
+	color: #ffb31f;
+}
+#student-content .top-slt-con .slt.select {
+	width: 315px;
+	height: 57px;
+	margin-top: 0;
+	background: url('../img/fengcai/slt-selected.png') no-repeat center center;
+	line-height: 57px;
+	color: #f89316;
+	font-size: 24px;
+	font-weight: bold;
+}
+#student-content .top-slt-con .slt.l {
+	margin-left: 4px;
+}
+#student-content .top-slt-con .slt.r {
+	margin-right: 0;
+}
+#student-content .content {
+	border-top: 2px solid #ffe05a;
+	border-radius: 3px 3px 0 0;
+	overflow: hidden;
+}
+#student-content .content .slide-con {
+	position: relative;
+	left: 0px;
+	width: 300%;
+}
+#student-content .content .z-s-w {
+	position: relative;
+	float: left;
+	width: 967px;
+	height: 700px;
+	background-color: #fff;
+}
+#student-content .content #organization {
+}
+#student-content .content .left-slt {
+	position: absolute;
+	left: 0;
+	top: -2px;
+	width: 70px;
+	height: 700px;
+	background-color: orange;
+	border-radius: 6px 0 0 6px;
+	overflow: hidden;
+}
+#student-content .content .left-slt .slt {
+	width: 100%;
+	height: 115px;
+	border-bottom: 2px solid #fcc06e;
+	background: url('../img/fengcai/1px.png') repeat center center;
+	writing-mode: tb-rl;
+	text-align: center;
+	line-height: 70px;
+	font-size: 14px;
+	color: #fff;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+#student-content .content .left-slt .slt.select {
+	background: url('../img/fengcai/1px-blue.png') repeat center center;
+	border-bottom: 2px solid #86d5dc;
+}
+
+#student-content .content .right-con-wrp {
+	width: 897px;
+	float: right;
+	overflow-y: auto;
+	height: 700px;
+}
+#student-content .content .right-con-wrp::-webkit-scrollbar-button {
+	background-color: #ffee89;
+}
+#student-content .content .right-con-wrp::-webkit-scrollbar {
+    width: 12px;
+}
+#student-content .content .right-con-wrp::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #fff9d3;
+}
+#student-content .content .right-con-wrp::-webkit-scrollbar-track {
+    background-color: #ffee89;
+}
+
+#student-content .content .right-con {
+	float: right;
+	width: 885px;
+	height: 5000px;
+}
+#student-content .content .right-con .page {
+	width: 100%;
+	padding-bottom: 40px;
+	margin-bottom: 40px;
+}
+#student-content .z-s-w .space {
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px dashed #e1dfd4;
+}
+ 
+#student-content .z-s-w h2 {
+	color: orange;
+    font-size: 30px;
+    line-height: 60px;
+    padding-left: 60px;
+}
+#student-content .z-s-w p {
+	width: 770px;
+	border-bottom: 1px dashed #e1dfd4;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 60px;
+	padding-right: 55px;
+	font-size: 13.98px;
+	color: #d1ab82;
+}
+#student-content .z-s-w span.t {
+	font-size: 15.98px;
+	color: #ff9853;
+}
+#student-content .z-s-w p.t {
+	color: #ff9853;
+	font-size: 15.98px;
+}
+#student-content .z-s-w p.pl {
+	padding-left: 229px;
+	padding-right: 89px;
+	width: 650px;
+}
+#corporation.z-s-w p {
+	padding-right: 90px;
+	width: 818px;
+}
+#redRock.z-s-w p {
+	padding-right: 90px;
+	width: 818px;
+}
+#redRock .redrock-box {
+	width: 538px;
+	height: 213px;
+	margin: 40px auto 34px;
+	background: url('../img/fengcai/redrock.png') no-repeat center center;
+}
+#redRock .redrock-box a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.same-con .innerCon {
+	position: relative;
+	margin: 15px auto 0;
+	width: 825px;
+	height: 710px;
+}
+.same-con .innerCon .same-arrow {
+	position: absolute;
+	top: 328px;
+	width: 29px;
+	height: 51px;
+	cursor: pointer;
+}
+.same-con .innerCon .same-arrow.left {
+	left: -48px;
+	background: url('../img/fengcai/pptleft.png') no-repeat center center;
+}
+.same-con .innerCon .same-arrow.right {
+	right: -48px;
+	background: url('../img/fengcai/pptright.png') no-repeat center center;
+}
+.same-con .innerCon .video-con {
+	float: left;
+	padding: 5px;
+	background-color: #fff;
+	border-radius: 3px;
+	width: 250px;
+	height: 207px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.same-con .innerCon .video-con.no-right {
+	margin-right: 0;
+}
+.same-con .innerCon .video-con.no-bottom {
+	margin-bottom: 0;
+}
+.same-con .innerCon .video-con img {
+	width: 250px;
+	height: 159px;
+}
+.same-con .innerCon .video-con h2 {
+	height: 48px;
+	margin-top: -6px;
+	font-size: 16px;
+	color: #ff9853;
+	text-align: center;
+	line-height: 48px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.same-con .innerCon .overflow-con {
+	overflow: hidden;
+}
+.same-con .innerCon .slide-con .con {
+	float: left;
+	width: 825px;
+}
+#video-con .innerCon .slide-con {
+	left: 0;
+	width: 200%;
+}
+#xuezi-con .innerCon .slide-con {
+	left: 0;
+	width: 200%;
+}
+#teacher-con .innerCon .slide-con {
+	left: 0;
+	width: 300%;
+}
+#xuezi-con .innerCon .stu-con {
+	float: left;
+	padding: 5px;
+	width: 245px;
+	height: 353px;
+	margin-right: 16px;
+	margin-bottom: 18px;
+	background-color: #fff;
+	overflow: hidden;
+}
+#xuezi-con .innerCon .stu-con.no-right {
+	margin-right: 0;
+}
+#xuezi-con .innerCon .stu-con.no-bottom {
+	margin-bottom: 0;
+}
+#xuezi-con .innerCon .stu-con p.name {
+	color: #fc9951;
+	text-align: center;
+	margin: 8px auto;
+	line-height: 16px;
+	font-size: 18px;
+}
+#xuezi-con .innerCon .stu-con p {
+	color: #cc9e68;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#xuezi-con .innerCon .stu-con p.desc {
+	height: 96px;
+}
+#xuezi-con .innerCon .stu-con p.zym {
+	height: 24px;
+	white-space: nowrap;
+}
+#xuezi-con .innerCon .stu-con p strong {
+	color: #c98221;
+}
+#xuezi-con .innerCon .stu-con img {
+	height: 200px;
+	margin-left: 30px;
+}
+#xuezi-con .innerCon .stu-con img.big {
+	width: 100%;
+	height: 200px;
+	margin: 0;
+}
+#fixWrp {
+	position: relative;
+	width: 980px;
+	height: 0;
+	margin: 0 auto;
+}
+#fixWrp #goTop {
+	z-index: 100;
+	position: absolute;
+	top: -40px;
+	right: -178px;
+	width: 112px;
+    height: 108px;
+    background: url('../img/returnTop.png') no-repeat center center;
+    cursor: pointer;
+}
