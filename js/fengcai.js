@@ -1,7 +1,7 @@
 (function(){
 	var aTitle = $('.h2'); //0 团委 1学生会 2科技 3社团联合 4青协 5艺术团
 	var innerSlideCon = $('.right-con-wrp')[0];
-	var aTop = [0,1181,3368,4571,5201,6581];  
+	var aTop = [0,1123,2255,3335,4140,5383];  
 	var aLSlt = $(".slt6");    //团委直属部门 校学生会 科技联合会。。。。。。按钮
 	for (var i = 0; i < aTitle.length; i++) {
 		aTitle[i].index = i;
