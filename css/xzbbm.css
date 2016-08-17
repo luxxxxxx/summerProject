@@ -278,7 +278,7 @@ a {
 
     width: 3656px;
 
-    transition: left 1.5s;
+    transition: left 1s ease;
 }
 .ques:after {
     content: "";
