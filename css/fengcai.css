@@ -73,7 +73,7 @@
 	width: 100%;
 	height: 751px;
 	margin-top: 15px;
-	transition: .5s top linear;
+	transition: .3s top linear;
 }
 .slideDownCon.current {
 	top: 0;
