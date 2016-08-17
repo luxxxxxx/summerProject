@@ -436,6 +436,7 @@ body {
 	width: 102px;
 	height: 38px;
 	background: url('../img/propellerRight.png') no-repeat center center;
+
 }
 #main .fixedBox#rightBox .plane .body {
 	top: 42px;
@@ -445,7 +446,8 @@ body {
 }
 #main .fixedBox#rightBox .code {
 	position: absolute;
-	top: 120px;
+	left: -11px;
+	top: 123px;
 	width: 175px;
 	height: 231px;
 	/*margin-left: -20px;*/
@@ -460,7 +462,7 @@ body {
 }
 #main .fixedBox#leftBox .plane .propeller {
 	top: 4px;
-	left: -7px;
+	left: 0px;
 	width: 102px;
 	height: 38px;
 	background: url('../img/propellerLeft.png') no-repeat center center;
@@ -474,8 +476,8 @@ body {
 }
 #main .fixedBox#leftBox .code {
 	position: absolute;
-	left: -8px;
-	top: 120px;
+	left: 16px;
+	top: 123px;
 	width: 175px;
 	height: 231px;
 	background: url('../img/QRcodeLeft.png') no-repeat center center ;
