@@ -82,19 +82,18 @@ a {
     padding-left: 27px;
     padding-bottom: 20px;
     border-bottom: 1px solid #f9e8e0;
-
     font-size: 14px;
     line-height: 1;
-
     color: #666;
 }
 .answer-user {
     float: left;
-
     color: #f89316;
+    margin-top:3px;
 }
 .answer-content {
     padding-right: 85px;
+    line-height: 22px;
 }
 .answer-time {
     position: absolute;

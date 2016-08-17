@@ -687,8 +687,9 @@ body {
 	height: 307px;
 	margin: 56px auto;
 	padding: 28px;
-	background-color: #fff;
+	background-color: #fffef1;
 	border-radius: 4px;
+	box-shadow: 0 0 45px rgba(0,0,0,.3);;
 }
 #description .close {
 	position: absolute;
