@@ -423,7 +423,7 @@ originGotopBtnBottom = parseInt(getStyle(goTopBtn,'bottom'));
 window.onscroll = function () {
 	var top = document.body.scrollTop || document.documentElement.scrollTop;
 	top = top + winHeight;
-	if (top > 1000) {
+	if (top > 1400) {
 		if(onOff) {
 			onOff = false;
 			goTopBtn.style.display = 'block';
@@ -432,7 +432,7 @@ window.onscroll = function () {
 				goTopBtn.style.bottom = originGotopBtnBottom + 40 + 'px';
 			},1)
 		}
-	}else if (top <= 1000) {
+	}else if (top <= 1400) {
 		if (!onOff) {
 			onOff = true;
 			var nTop = goTopBtn.offsetTop;
