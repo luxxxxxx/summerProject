@@ -323,7 +323,7 @@ mapScreen.onmousedown = function (e) {
 }
 
 
-
+var winHeight; //目前窗口高度 
 function descfix (l,t) {    //移动说明文字   l: 目标箭头left t：目标箭头top
 	var targetL = l -22;
 	var targetT = t +54;
@@ -385,6 +385,10 @@ function targetArrow() {    //获取 目标箭头
 		leftPlane.style.left = x + 'px';
 		rightPlane.style.right = x + 'px';
 		goTopBtn.style.right = x + 'px';
+		if (window.innerHeight)
+			winHeight = window.innerHeight;
+		else if ((document.body) && (document.body.clientHeight))
+			winHeight = document.body.clientHeight;
 	}
 
 
@@ -410,13 +414,15 @@ function slideToTop () {
 }
 
 var onOff = true;
-
+if (window.innerHeight)
+	winHeight = window.innerHeight;
+else if ((document.body) && (document.body.clientHeight))
+	winHeight = document.body.clientHeight;
 
 originGotopBtnBottom = parseInt(getStyle(goTopBtn,'bottom'));
 window.onscroll = function () {
 	var top = document.body.scrollTop || document.documentElement.scrollTop;
-	document.onclick = function () {
-	}
+	top = top + winHeight;
 	if (top > 1000) {
 		if(onOff) {
 			onOff = false;
@@ -437,8 +443,8 @@ window.onscroll = function () {
 			},300)
 		}
 	}
-	if (top > 2190) {
-		goTopBtn.style.bottom = originGotopBtnBottom + (top - 2190)*(7/9) + 'px'; //神秘算法
+	if (top > 3160) {
+		goTopBtn.style.bottom = originGotopBtnBottom + (top - 3160)*(7/9) + 'px'; //神秘算法
 	}
 }
 
