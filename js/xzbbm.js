@@ -174,7 +174,6 @@
             asker = $('.answer-asker')[0],
             answerBox = $('.answer-main')[0];
         var title = $(titleName);
-
         // 为每个问题设置弹框
         for (var i = 0; i < data.length; i++) {
             addEvent(title[i], 'click', (function (n) {
@@ -216,6 +215,25 @@
                             }
                             // 将所有评论输出到弹框中
                             answerBox.innerHTML = s;
+                            var AnserBox = $('.answer-box')[0];
+                            var answerImg = answerBox.querySelectorAll('img');
+                            if (answerImg) {  //判断答案栏里面是否有图片  点击放大到原始比例（设置过最大宽高 防止意外情况）
+                                for (var i = 0; i < answerImg.length; i++) {
+                                    answerImg[i].isFixed = false;
+                                    addEvent(answerImg[i],'click',function(){
+                                        if (!this.isFixed) {
+                                            this.isFixed = true;
+                                            this.style.width = "100%";
+                                            this.style.height = "100%";
+                                        } else {
+                                            this.isFixed = false;
+                                            this.style.width = '90px';
+                                            this.style.height = '90px';
+                                        }
+                                        
+                                    })
+                                }
+                            }
                         }
                     })
                 }

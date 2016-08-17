@@ -72,9 +72,12 @@ a {
 }
 .answer-main img {
     display: inline-block;
+    max-width: 800px;
+    max-height: 1000px;
     height: 90px;
     width: 90px;
     margin-left: 5px;
+    cursor: pointer;
 }
 .answer-item {
     position: relative;

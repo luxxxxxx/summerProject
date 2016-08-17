@@ -697,7 +697,7 @@ body {
 	right: -22px;
 	top: -22px;
 	width: 45px;
-	height: 45px;
+	height: 46px;
 	background: url('../img/close.png') no-repeat center center;
 	transition: .3s all ease;
 	cursor: pointer;
