@@ -288,8 +288,8 @@ body {
 #main #banner-wrp .banner .isLand-con #title {
 	z-index: 10;
 	position: absolute;
-	top: 0;
-	right: 239px;
+	top: -15px;
+	right: 234px;
 	width: 252px;
 	height: 135px;
 	animation: littleshake 5s linear;
